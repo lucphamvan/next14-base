@@ -1,0 +1,41 @@
+import { Color, List, ListIcon, ListItem, Popover, PopoverContent, PopoverTrigger } from "@/design-system"
+import { Avatar, Stack, Text } from "@chakra-ui/react"
+import { signOut, useSession } from "next-auth/react"
+import { MdLogout } from "react-icons/md"
+
+export const ProfileButton = () => {
+    const { data, status } = useSession()
+
+    if (status === "unauthenticated") {
+        return null
+    }
+
+    return (
+        <Popover placement="bottom-end">
+            <PopoverTrigger>
+                <button>
+                    <Avatar bg={Color.Primary} size="sm" />
+                </button>
+            </PopoverTrigger>
+            <PopoverContent>
+                <Stack alignItems="center" py="4">
+                    <Avatar bg={Color.Primary} />
+                    <Text fontSize="lg" mt="2">
+                        {data?.user.name}
+                    </Text>
+                    <Text fontSize="sm" fontWeight={300}>
+                        {data?.user.email}
+                    </Text>
+                </Stack>
+                <Stack py="4">
+                    <List>
+                        <ListItem cursor="pointer" fontSize="sm" _hover={{ background: Color.BgMenu }} onClick={() => signOut()}>
+                            <ListIcon as={MdLogout} />
+                            Sign out
+                        </ListItem>
+                    </List>
+                </Stack>
+            </PopoverContent>
+        </Popover>
+    )
+}

@@ -1,0 +1,40 @@
+{
+    "name": "luck",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "format": "npx prettier . --write"
+    },
+    "dependencies": {
+        "@chakra-ui/next-js": "^2.1.5",
+        "@chakra-ui/react": "^2.8.1",
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "@hookform/resolvers": "^3.3.2",
+        "axios": "^1.5.1",
+        "framer-motion": "^10.16.4",
+        "jwt-decode": "^4.0.0",
+        "next": "^14.0.3",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-hook-form": "^7.47.0",
+        "use-ripple-hook": "^1.0.22",
+        "zod": "^3.22.4"
+    },
+    "devDependencies": {
+        "@trivago/prettier-plugin-sort-imports": "^4.2.0",
+        "@types/node": "^20",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "eslint": "^8",
+        "eslint-config-next": "^14.0.3",
+        "next-auth": "^5.0.0-beta.3",
+        "prettier": "3.0.3",
+        "react-icons": "^4.11.0",
+        "typescript": "^5"
+    }
+}
