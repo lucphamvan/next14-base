@@ -13,5 +13,5 @@ export enum Color {
     PrimaryHover = "#a1e34d",
     OutlineHover = "#b3f35f24",
     Error = "#f35f5f",
-    BoxShadow = "#161e1f 0px 2px 5px 0px"
+    BoxShadow = "#161e1fa0 0px 2px 6px 0px"
 }
