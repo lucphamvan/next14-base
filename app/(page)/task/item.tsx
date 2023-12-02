@@ -66,7 +66,7 @@ const TaskItem = ({ task, finishTask, unFinishTask, removeTask, startTask }: Pro
                 Updated at {formatDate(new Date(task.updatedAt))}
             </Text>
             {isInProgress && (
-                <Badge type="in progress" w="max-content">
+                <Badge type="info" w="max-content">
                     {task.status}
                 </Badge>
             )}

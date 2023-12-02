@@ -1,8 +1,9 @@
 "use client"
 
-import { Color } from "../enum/color"
 import { ListItem as ChakraListItem, ListItemProps } from "@chakra-ui/react"
 import useRipple from "use-ripple-hook"
+
+import { Color } from "../enum/color"
 
 export { List, ListIcon } from "@chakra-ui/react"
 

@@ -27,26 +27,17 @@ const InfoBadge = styled(BaseBadge)`
 
 interface Props extends BadgeProps {
     children: React.ReactNode
-    type?: "primary" | "done" | "in progress" | "todo" | "default" | "error" | "warning" | "success" | "info"
+    type?: "primary" | "error" | "warning" | "success" | "info"
 }
 export const Badge = ({ children, ...props }: Props) => {
     switch (props.type) {
         case "primary":
             return <PrimaryBadge {...props}>{children}</PrimaryBadge>
-        case "error":
-        case "done":
-            return <HotBadge {...props}>{children}</HotBadge>
         case "info":
-        case "in progress":
             return <InfoBadge {...props}>{children}</InfoBadge>
-        case "todo":
-            return <BaseBadge {...props}>{children}</BaseBadge>
-        case "default":
-            return <BaseBadge {...props}>{children}</BaseBadge>
         case "warning":
-            return <BaseBadge {...props}>{children}</BaseBadge>
+            return <HotBadge {...props}>{children}</HotBadge>
         case "success":
-            return <BaseBadge {...props}>{children}</BaseBadge>
         default:
             return <BaseBadge {...props}>{children}</BaseBadge>
     }

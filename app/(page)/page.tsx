@@ -1,10 +1,17 @@
 "use client"
 
 import { Badge, Button, Card } from "@/design-system"
-import { Box, Stack } from "@chakra-ui/react"
+import { useNotify } from "@/design-system/toast"
+import { Box, Flex, Stack } from "@chakra-ui/react"
 import { signOut } from "next-auth/react"
 
 export default function Home() {
+    const { notify } = useNotify()
+
+    const showToast = (type: "success" | "error" | "warning" | "info") => {
+        notify(type, type, "This is a sample message")
+    }
+
     return (
         <Card>
             <Stack spacing="6">
@@ -12,13 +19,20 @@ export default function Home() {
                     Buttons are a type of call to action (CTA) the user can click or press. Button labels should indicate the type of action that will
                     occur when the button is pressed.
                 </Box>
-                <Button maxW="fit-content">Submit</Button>
-                <Button maxW="fit-content" variant="outline" onClick={() => signOut()}>
-                    submit
-                </Button>
-                <Box>
-                    <Badge type="primary">Hello</Badge>
-                </Box>
+                <Flex gap="2" flexWrap="wrap">
+                    <Button onClick={() => showToast("error")}>Show Error</Button>
+                    <Button onClick={() => showToast("success")}>Show Success</Button>
+                    <Button onClick={() => showToast("info")}>Show Info</Button>
+                    <Button onClick={() => showToast("warning")}>Show Warning</Button>
+                    <Button variant="outline" disabled onClick={() => signOut()}>
+                        Logout
+                    </Button>
+                </Flex>
+                <Flex gap="2">
+                    <Badge type="primary">Primary Badge</Badge>
+                    <Badge type="warning">Warning Badge</Badge>
+                    <Badge type="info">Info Badge</Badge>
+                </Flex>
             </Stack>
         </Card>
     )

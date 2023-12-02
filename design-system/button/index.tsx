@@ -1,9 +1,10 @@
 "use client"
 
-import { Color } from "../enum/color"
 import { ButtonProps, chakra } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 import useRipple from "use-ripple-hook"
+
+import { Color } from "../enum/color"
 
 const StyledButton = styled(chakra.button)`
     border-radius: 0.25rem;
@@ -27,12 +28,27 @@ const OutlineButton = styled(StyledButton)`
     }
 `
 
+const DisabledButton = styled(StyledButton)`
+    background-color: ${Color.TextGray};
+    color: ${Color.BgDark};
+    &:hover {
+        background-color: ${Color.TextGray};
+    }
+    cursor: initial;
+`
+
 export const Button = (props: ButtonProps) => {
     const [ripple, event] = useRipple({
         color: Color.RipleBtn
     })
-    if (props.variant === "outline") {
-        return <OutlineButton {...props} ref={ripple} onMouseDown={event} />
+
+    if (props.disabled) {
+        return <DisabledButton maxW="fit-content" {...props} />
     }
-    return <StyledButton {...props} ref={ripple} onMouseDown={event} />
+
+    if (props.variant === "outline") {
+        return <OutlineButton maxW="fit-content" {...props} ref={ripple} onMouseDown={event} />
+    }
+
+    return <StyledButton maxW="fit-content" {...props} ref={ripple} onMouseDown={event} />
 }

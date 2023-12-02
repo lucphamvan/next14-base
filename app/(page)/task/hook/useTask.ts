@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react"
 export enum TaskStatus {
     TODO = "todo",
     DONE = "done",
-    IN_PROGRESS = "in progress"
+    IN_PROGRESS = "in_progress"
 }
 export interface Task {
     id: string

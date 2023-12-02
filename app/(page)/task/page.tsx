@@ -5,7 +5,7 @@ import { Box, Divider, Flex, Grid, GridItem, Icon, Stack, Text } from "@chakra-u
 import { Suspense, useCallback } from "react"
 import { ImRocket } from "react-icons/im"
 
-import useTask from "./hook/useTask"
+import useTask, { TaskStatus } from "./hook/useTask"
 import TaskItem from "./item"
 import Loading from "./loading"
 
@@ -13,7 +13,7 @@ const Page = () => {
     const { text, tasks, finishTask, handleAddTask, handleKeyDown, onTextChange, removeTask, unFinishTask, startTask } = useTask()
 
     const renderTask = useCallback(
-        (status: "todo" | "in progress" | "done") => {
+        (status: TaskStatus) => {
             return tasks
                 .filter((t) => t.status === status)
                 .map((task) => {
@@ -80,7 +80,7 @@ const Page = () => {
                                 <Title color={Color.Primary} fontWeight="500" pl={4}>
                                     TODO
                                 </Title>
-                                {renderTask("todo")}
+                                {renderTask(TaskStatus.TODO)}
                             </Stack>
                         </GridItem>
                         <GridItem>
@@ -88,7 +88,7 @@ const Page = () => {
                                 <Title color={Color.Primary} fontWeight="500" pl={4}>
                                     IN PROGRESS
                                 </Title>
-                                {renderTask("in progress")}
+                                {renderTask(TaskStatus.IN_PROGRESS)}
                             </Stack>
                         </GridItem>
                         <GridItem>
@@ -96,7 +96,7 @@ const Page = () => {
                                 <Title color={Color.Primary} fontWeight="500" pl={4}>
                                     DONE
                                 </Title>
-                                {renderTask("done")}
+                                {renderTask(TaskStatus.DONE)}
                             </Stack>
                         </GridItem>
                     </Grid>
