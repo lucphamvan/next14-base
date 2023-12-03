@@ -61,7 +61,7 @@ export const StyledContentBox = styled(Box)`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     padding-left: 0;
 `
 

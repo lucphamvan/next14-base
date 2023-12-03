@@ -18,12 +18,12 @@ const ToastMessage = ({ title, message, type, onClose }: Props) => {
     return (
         <StyledContainer type={type}>
             <StyledIconBox>
-                <Icon as={toastInfo[type].icon} color={toastInfo[type].color} boxSize="8" />
+                <Icon as={toastInfo[type].icon} color={toastInfo[type].color} boxSize={message ? 8 : 7} />
             </StyledIconBox>
             <StyledVerticalLine type={type} />
             <StyledContentBox>
                 {title && (
-                    <Box fontSize="18px" color={toastInfo[type].color} fontWeight="bold" className={Font.brand.className}>
+                    <Box fontSize="16px" color={toastInfo[type].color} fontWeight="bold" className={Font.brand.className}>
                         {title}
                     </Box>
                 )}
@@ -42,7 +42,7 @@ const ToastMessage = ({ title, message, type, onClose }: Props) => {
 
 export const useNotify = () => {
     const toast = useChakraToast({
-        position: "top-right",
+        position: "top",
         duration: 5000
     })
 

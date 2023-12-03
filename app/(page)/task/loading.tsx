@@ -1,5 +1,7 @@
-import { Skeleton } from "@chakra-ui/react"
+"use client"
 
-export default function Loading() {
-    return <Skeleton />
+import Loading from "@/design-system/loading"
+
+export default function Page() {
+    return <Loading />
 }

@@ -6,7 +6,8 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
     title: BRAND_NAME,
-    description: "Nothing is better than a good life"
+    description: "Nothing is better than a good life",
+    icons: "next.svg"
 }
 
 interface Props {
