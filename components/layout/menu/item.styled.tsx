@@ -1,4 +1,4 @@
-import { Color, Font } from "@/design-system"
+import { BoxShadow, Color, Font } from "@/design-system"
 import styled from "@emotion/styled"
 
 export const UL = styled.ul`
@@ -40,6 +40,7 @@ export const ItemContainer = styled.div<ItemContainerProps>`
     &:hover {
         background-color: ${Color.BgMenu};
     }
+    box-shadow: ${({ $isActive, $isHover }) => ($isActive || $isHover ? `${BoxShadow.Toast}` : "unset")};
 `
 export const Stack = styled.div`
     display: flex;

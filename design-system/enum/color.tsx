@@ -5,8 +5,8 @@ export enum Color {
     BgInput = "#425455",
     BgToast = "#263335",
     BgPopup = "#263335",
-    TextLight = "#d3e5e5",
-    TextGray = "#b5c2c2",
+    TextLight = "#b8c5c5",
+    TextGray = "#9ea8a8",
     TextDark = "#1b2627",
     Primary = "#b2f35f",
     Ripple = "#B2F35F55",
@@ -14,7 +14,8 @@ export enum Color {
     Border = "#303c3d",
     PrimaryHover = "#a1e34d",
     OutlineHover = "#b3f35f24",
-    Error = "#f35f5f"
+    Error = "#f35f5f",
+    BgCardItem = "#283738"
 }
 
 export enum BoxShadow {

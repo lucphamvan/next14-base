@@ -1,4 +1,5 @@
-import { Im500Px, ImCheckmark, ImDropbox, ImEdge, ImFilter, ImGift, ImHome, ImLoop2, ImSortAmountAsc, ImSteam, ImUser } from "react-icons/im"
+import { ImFilter, ImHome, ImLoop2, ImSortAmountAsc, ImUser } from "react-icons/im"
+import { IoCreateOutline, IoPersonOutline, IoSettingsOutline } from "react-icons/io5"
 
 import { Menu } from "./menu/type"
 
@@ -12,19 +13,19 @@ export const menu: Menu[] = [
     {
         id: "task",
         name: "Task",
-        icon: ImCheckmark,
+        icon: IoCreateOutline,
         path: "/task"
     },
     {
         id: "profile",
         name: "Profile",
-        icon: ImUser,
+        icon: IoPersonOutline,
         path: "/users"
     },
     {
         id: "setting",
         name: "Setting",
-        icon: ImHome,
+        icon: IoSettingsOutline,
         children: [
             {
                 id: "setting-filter",

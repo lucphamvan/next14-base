@@ -1,7 +1,8 @@
-import { Badge, Color } from "@/design-system"
+import { Badge, BoxShadow, Color } from "@/design-system"
 import { Task, TaskStatus } from "@/model/task"
 import { formatDate } from "@/utils/date.util"
 import { Flex, Stack, Text } from "@chakra-ui/react"
+import styled from "@emotion/styled"
 import React from "react"
 import { ImCheckmark, ImFire, ImPlay, ImRedo, ImStop } from "react-icons/im"
 
@@ -24,6 +25,14 @@ const Tooltip = ({ label, children, ...props }: { label: string; children: React
     )
 }
 
+const StyledStack = styled(Stack)`
+    background: linear-gradient(120deg, rgba(40, 55, 56, 1), #263233);
+    color: ${Color.TextLight};
+    box-shadow: ${BoxShadow.Toast};
+    border-radius: 4px;
+    border: none;
+    padding: 1rem;
+`
 const TaskItem = ({ task, finishTask, unFinishTask, removeTask, startTask }: Props) => {
     const isInProgress = task.status === TaskStatus.IN_PROGRESS
     const isDone = task.status === TaskStatus.DONE
@@ -31,7 +40,7 @@ const TaskItem = ({ task, finishTask, unFinishTask, removeTask, startTask }: Pro
     const showFinishIcon = task.status === TaskStatus.TODO || task.status === TaskStatus.IN_PROGRESS
 
     return (
-        <Stack key={task.id} borderColor={Color.Border} borderWidth="1px" borderStyle="solid" padding={4} borderRadius={4}>
+        <StyledStack key={task.id}>
             <Flex alignItems="center" gap="2">
                 <Flex flexGrow={1} alignItems="center" gap="2">
                     {isTodo && (
@@ -75,7 +84,7 @@ const TaskItem = ({ task, finishTask, unFinishTask, removeTask, startTask }: Pro
                     {task.status}
                 </Badge>
             )}
-        </Stack>
+        </StyledStack>
     )
 }
 export default React.memo(TaskItem)
