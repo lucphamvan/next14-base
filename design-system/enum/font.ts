@@ -33,7 +33,7 @@ const brandFont = Oxanium({
 export const Font = {
     primary: robotoCondensedFont,
     title: robotoCondensedFont,
-    secondary: secondaryFont,
+    secondary: robotoCondensedFont,
     brand: brandFont
 }
 

@@ -12,7 +12,7 @@ const REFRESH_TOKEN_INTERVAL = 13 * 60 // 13 minutes
 export const NextAuthProvider = ({ children }: Props) => {
     return (
         <SessionProvider refetchInterval={REFRESH_TOKEN_INTERVAL} refetchWhenOffline={false} refetchOnWindowFocus={false}>
-            <SubProvider>{children}</SubProvider>
+            {children}
         </SessionProvider>
     )
 }

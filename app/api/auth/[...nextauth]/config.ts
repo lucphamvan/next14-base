@@ -9,8 +9,9 @@ const refreshToken = async (token: JWT): Promise<JWT> => {
         const accessToken = await refreshAccessToken(token.refreshToken)
         return { ...token, accessToken, verifyAt: Date.now() }
     } catch (error) {
-        console.log("Error refreshing access token", error)
-        return { ...token, error: "RefreshAccessTokenError" }
+        throw error
+        // console.log("Error refreshing access token", error)
+        // return { ...token, error: "RefreshAccessTokenError" }
     }
 }
 
