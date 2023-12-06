@@ -11,6 +11,10 @@ export const Icon = styled(ChakraIcon)`
     &:hover {
         color: #507015;
     }
+    &:active {
+        zoom: 0.95;
+    }
+    transition: zoom 1s ease-in-out;
 `
 
 export const HintText = styled(Tooltip)`

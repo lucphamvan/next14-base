@@ -16,6 +16,7 @@ const StyledButton = styled(chakra.button)`
     &:hover {
         background-color: ${Color.PrimaryHover};
     }
+    height: max-content;
 `
 
 const OutlineButton = styled(StyledButton)`
