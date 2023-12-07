@@ -1,14 +1,14 @@
 "use client"
 
-import { ButtonProps, chakra } from "@chakra-ui/react"
+import { ButtonProps, Button as ChakraButton, chakra } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 import useRipple from "use-ripple-hook"
 
-import { Color } from "../enum/color"
+import { Color } from "../config/color"
 
-const StyledButton = styled(chakra.button)`
+const StyledButton = styled(ChakraButton)`
     border-radius: 0.25rem;
-    padding: 0.25rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     text-transform: uppercase;
     font-weight: 600;
     color: ${Color.TextDark};
@@ -16,7 +16,7 @@ const StyledButton = styled(chakra.button)`
     &:hover {
         background-color: ${Color.PrimaryHover};
     }
-    height: max-content;
+    height: initial;
 `
 
 const OutlineButton = styled(StyledButton)`

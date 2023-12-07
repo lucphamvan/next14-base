@@ -11,6 +11,7 @@ export enum API {
     REFRESH_TOKEN = baseURL + "/token/refresh",
     GET_USER = "/users/me",
     GET_USERS = "/users",
+    CREATE_USER = "/users",
     CREATE_TASK = baseURL + "/tasks",
     GET_TASKS = baseURL + "/tasks"
 }

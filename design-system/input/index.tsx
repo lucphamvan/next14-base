@@ -4,7 +4,7 @@ import { Input as ChakraInput, InputProps } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 import React from "react"
 
-import { Color } from "../enum/color"
+import { Color } from "../config/color"
 
 const borderStyle = `1px solid ${Color.Border}`
 const borderFocusStyle = `1px solid ${Color.Primary}`

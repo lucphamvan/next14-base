@@ -4,7 +4,7 @@ import { FormControl as ChakraFormControl, FormLabel as ChakraFormLabel } from "
 import styled from "@emotion/styled"
 import { FieldErrors, FieldValues } from "react-hook-form"
 
-import { Color } from "../enum/color"
+import { Color } from "../config/color"
 import { FormError } from "./form-error"
 
 export const FormControl = styled(ChakraFormControl)``

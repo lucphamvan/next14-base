@@ -14,7 +14,7 @@ export enum Color {
     Border = "#303c3d",
     PrimaryHover = "#a1e34d",
     OutlineHover = "#b3f35f24",
-    Error = "#f35f5f",
+    Error = "#db6050",
     BgCardItem = "#283738"
 }
 

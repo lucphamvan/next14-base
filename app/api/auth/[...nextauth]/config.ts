@@ -4,15 +4,18 @@ import NextAuth, { NextAuthConfig } from "next-auth"
 import CredentialProvider from "next-auth/providers/credentials"
 import { User as JwtUser } from "next-auth/types"
 
+const ignorePaths = ["/register", "/login"]
+const isIgnorePath = (path: string) => ignorePaths.some((p) => path.startsWith(p))
+
 const refreshToken = async (token: JWT): Promise<JWT> => {
-    try {
-        const accessToken = await refreshAccessToken(token.refreshToken)
-        return { ...token, accessToken, verifyAt: Date.now() }
-    } catch (error) {
-        throw error
-        // console.log("Error refreshing access token", error)
-        // return { ...token, error: "RefreshAccessTokenError" }
-    }
+    // try {
+    const accessToken = await refreshAccessToken(token.refreshToken)
+    return { ...token, accessToken, verifyAt: Date.now() }
+    // } catch (error) {
+    //     throw error
+    //     // console.log("Error refreshing access token", error)
+    //     // return { ...token, error: "RefreshAccessTokenError" }
+    // }
 }
 
 const authOptions: NextAuthConfig = {
@@ -42,7 +45,7 @@ const authOptions: NextAuthConfig = {
             if (nextUrl.pathname.startsWith("/login") && isLoggedIn) {
                 return Response.redirect(new URL("/", nextUrl))
             }
-            if (nextUrl.pathname.startsWith("/login") && !isLoggedIn) {
+            if (isIgnorePath(nextUrl.pathname) && !isLoggedIn) {
                 return true
             }
             if (!isLoggedIn) {

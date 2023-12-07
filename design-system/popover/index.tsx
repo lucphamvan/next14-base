@@ -3,7 +3,7 @@
 import { PopoverContent as ChakraPopOverContent, PopoverContentProps } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 
-import { BoxShadow, Color } from "../enum/color"
+import { BoxShadow, Color } from "../config/color"
 
 const StyledPopoverContent = styled(ChakraPopOverContent)`
     background: rgb(40, 55, 56);

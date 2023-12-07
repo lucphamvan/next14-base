@@ -1,10 +1,10 @@
 "use client"
 
-import { Box, Center, Icon, useToast as useChakraToast } from "@chakra-ui/react"
+import { Box, Icon, useToast as useChakraToast } from "@chakra-ui/react"
 import { IoCloseOutline } from "react-icons/io5"
 
-import { Color } from "../enum/color"
-import { Font } from "../enum/font"
+import { Color } from "../config/color"
+import { Font } from "../config/font"
 import { StyledCloseBox, StyledContainer, StyledContentBox, StyledIconBox, StyledVerticalLine, ToastType, toastInfo } from "./index.styled"
 
 interface Props {
