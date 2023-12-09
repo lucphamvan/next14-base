@@ -1,7 +1,7 @@
 import { CSSProperties } from "react"
 import { IconContext, IconType } from "react-icons"
 
-interface IconProps {
+interface Props {
     As: IconType
     color?: string
     size?: string
@@ -9,7 +9,7 @@ interface IconProps {
     style?: CSSProperties
 }
 
-const Icon = ({ As, onClick, color, size, style }: IconProps) => {
+const Icon = ({ As, onClick, color, size, style }: Props) => {
     return (
         <IconContext.Provider value={{ color, size, style }}>
             <As onClick={onClick} />

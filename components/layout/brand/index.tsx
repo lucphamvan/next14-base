@@ -7,33 +7,33 @@ import { MdGrass } from "react-icons/md"
 import { LayoutContext } from "../context"
 import { MediaQuery, useMediaQuery } from "../hook/useMediaQuery"
 import Icon from "../icon"
-import { Center, Container, Name } from "./index.styled"
+import * as Styled from "./index.styled"
 
-interface BrandProps {
+interface Props {
     name: string
 }
 
-const Brand = ({ name }: BrandProps) => {
+const Brand = ({ name }: Props) => {
     const { onToggleMenu, onToggleMobileMenu } = useContext(LayoutContext)
     const isMobile = useMediaQuery(MediaQuery.Mobile)
     return (
-        <Container>
+        <Styled.Wrapper>
             {isMobile ? (
-                <Center onClick={onToggleMobileMenu}>
+                <Styled.Center onClick={onToggleMobileMenu}>
                     <Icon As={ImMenu} size="24px" />
-                </Center>
+                </Styled.Center>
             ) : (
-                <Center onClick={onToggleMenu}>
+                <Styled.Center onClick={onToggleMenu}>
                     <Icon As={ImMenu} size="24px" />
-                </Center>
+                </Styled.Center>
             )}
-            <Container style={{ paddingLeft: 10, gap: 2 }}>
+            <Styled.Wrapper style={{ paddingLeft: 10, gap: 2 }}>
                 <Icon As={MdGrass} color={Color.Primary} size="32px" />
-                <Name>
+                <Styled.Text>
                     <Link href="/">{name}</Link>
-                </Name>
-            </Container>
-        </Container>
+                </Styled.Text>
+            </Styled.Wrapper>
+        </Styled.Wrapper>
     )
 }
 

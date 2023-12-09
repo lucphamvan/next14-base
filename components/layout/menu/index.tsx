@@ -1,27 +1,27 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo } from "react"
 
-import { Container, UL } from "./index.styled"
+import { Ul, Wrapper } from "./index.styled"
 import Item from "./item"
 import { Menu as MenuType } from "./type"
 
-interface MenuProps {
+interface Props {
     showText?: boolean
     items: MenuType[]
 }
 
-const Menu = ({ items, showText }: MenuProps) => {
-    const Items = useMemo(() => {
+const Menu = ({ items, showText }: Props) => {
+    const menuItems = useMemo(() => {
         return items?.map((item) => {
             return <Item key={item.id} item={item} showText={showText} />
         })
     }, [items, showText])
 
     return (
-        <Container>
-            <UL>{Items}</UL>
-        </Container>
+        <Wrapper>
+            <Ul>{menuItems}</Ul>
+        </Wrapper>
     )
 }
 

@@ -28,7 +28,7 @@ const ToastMessage = ({ title, message, type, onClose }: Props) => {
                     </Box>
                 )}
                 {message && (
-                    <Box fontSize="15px" color={Color.TextGray} className={Font.secondary.className}>
+                    <Box fontSize="15px" color={Color.TextSecondary} className={Font.secondary.className}>
                         {message}
                     </Box>
                 )}

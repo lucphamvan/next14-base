@@ -9,17 +9,17 @@ import { useDisclosure } from "../hook/useDisclosure"
 import Icon from "../icon"
 import { Menu as MenuType } from "../menu/type"
 import { getAllDescendantIds } from "../util"
-import { UL } from "./index.styled"
+import { Ul } from "./index.styled"
 import { Collapse, Flex, Li } from "./item.styled"
 
 const COLLAPSE_ICON_STYLE: CSSProperties = { position: "absolute", right: "1rem", paddingTop: "0.25rem", transform: "rotate(180deg)" }
 const ICON_STYLE = { paddingBottom: "0.25rem" }
 
-interface ItemProps {
+interface Props {
     item: MenuType
 }
 
-const Item = ({ item }: ItemProps) => {
+const Item = ({ item }: Props) => {
     const { activeItem, setActiveItem, onToggleMobileMenu } = useContext(LayoutContext)
     const { isOpen, onToggle: onToggleCollapse } = useDisclosure()
     const router = useRouter()
@@ -47,11 +47,11 @@ const Item = ({ item }: ItemProps) => {
             </Flex>
             {hasChildren && (
                 <Collapse $isOpen={isOpen}>
-                    <UL>
+                    <Ul>
                         {item.children?.map((child) => {
                             return <Item key={child.name} item={child} />
                         })}
-                    </UL>
+                    </Ul>
                 </Collapse>
             )}
         </Li>

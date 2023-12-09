@@ -27,7 +27,7 @@ const Tooltip = ({ label, children, ...props }: { label: string; children: React
 
 const StyledStack = styled(Stack)`
     background: linear-gradient(120deg, rgba(40, 55, 56, 1), #263233);
-    color: ${Color.TextLight};
+    color: ${Color.TextPrimary};
     box-shadow: ${BoxShadow.Toast};
     border-radius: 4px;
     border: none;
@@ -71,7 +71,7 @@ const TaskItem = ({ task, finishTask, unFinishTask, removeTask, startTask }: Pro
                     <Icon as={ImFire} onClick={() => removeTask(task.id)} />
                 </Tooltip>
             </Flex>
-            <Text as="span" fontSize="12.5px" color={Color.TextGray}>
+            <Text as="span" fontSize="12.5px" color={Color.TextSecondary}>
                 Updated at {formatDate(new Date(task.updatedAt))}
             </Text>
             {isInProgress && (

@@ -21,14 +21,14 @@ export const Container = styled.div<{ $isShow: boolean }>`
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 `
 
-export const BrandContainer = styled.div`
+export const Wrapper = styled.div`
     display: flex;
     height: 64px;
     align-items: center;
     padding: 0 1rem;
 `
 
-export const UL = styled.ul`
+export const Ul = styled.ul`
     list-style: none;
     display: flex;
     flex-direction: column;

@@ -12,7 +12,7 @@ export const FormControl = styled(ChakraFormControl)``
 export const FormLabel = styled(ChakraFormLabel)`
     font-size: 0.875rem;
     font-weight: ${(props) => (props.fontWeight ? props.fontWeight : 400)};
-    color: ${Color.TextLight};
+    color: ${Color.TextPrimary};
     span[role="presentation"] {
         color: ${Color.Error};
     }

@@ -8,5 +8,5 @@ import { Font } from "../config/font"
 
 export const Title = styled(ChakraText)`
     ${Font.title.style};
-    color: ${(prop) => prop.color ?? Color.TextLight};
+    color: ${(prop) => prop.color ?? Color.TextPrimary};
 `

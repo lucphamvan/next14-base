@@ -7,7 +7,7 @@ import { BoxShadow, Color } from "../config/color"
 
 const StyledCard = styled(ChakraCard)`
     background-color: ${({ bg }) => bg || Color.BgCard};
-    color: ${Color.TextLight};
+    color: ${Color.TextPrimary};
     box-shadow: ${BoxShadow.Toast};
 `
 

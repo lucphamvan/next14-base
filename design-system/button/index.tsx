@@ -11,7 +11,7 @@ const StyledButton = styled(ChakraButton)`
     padding: 0.5rem 1.5rem;
     text-transform: uppercase;
     font-weight: 600;
-    color: ${Color.TextDark};
+    color: ${Color.TextBtn};
     background-color: ${Color.Primary};
     &:hover {
         background-color: ${Color.PrimaryHover};
@@ -30,10 +30,10 @@ const OutlineButton = styled(StyledButton)`
 `
 
 const DisabledButton = styled(StyledButton)`
-    background-color: ${Color.TextGray};
+    background-color: ${Color.TextSecondary};
     color: ${Color.BgDark};
     &:hover {
-        background-color: ${Color.TextGray};
+        background-color: ${Color.TextSecondary};
     }
     cursor: initial;
 `

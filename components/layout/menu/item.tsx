@@ -7,10 +7,10 @@ import useRipple from "use-ripple-hook"
 import { LayoutContext } from "../context"
 import Icon from "../icon"
 import { getAllDescendantIds } from "../util"
-import { ItemContainer, LI, Stack, UL } from "./item.styled"
+import { Li, Stack, Ul, Wrapper } from "./item.styled"
 import { Menu as MenuType } from "./type"
 
-type ItemProps = {
+type Props = {
     item: MenuType
     showText?: boolean
 }
@@ -18,7 +18,7 @@ type ItemProps = {
 const EXPAND_ICON_STYLE: React.CSSProperties = { position: "absolute", right: "1rem", paddingTop: "0.25rem", transform: "rotate(90deg)" }
 const ICON_STYLE = { paddingBottom: "0.125rem" }
 
-const Item = ({ item, showText }: ItemProps) => {
+const Item = ({ item, showText }: Props) => {
     const router = useRouter()
     const { setActiveItem, activeItem } = useContext(LayoutContext)
     const [ref, event] = useRipple({ color: Color.Ripple })
@@ -45,8 +45,8 @@ const Item = ({ item, showText }: ItemProps) => {
     }, [activeItem, item])
 
     return (
-        <LI>
-            <ItemContainer
+        <Li>
+            <Wrapper
                 $isActive={isActive}
                 $isHover={isHover}
                 onClick={onItemClick}
@@ -58,13 +58,13 @@ const Item = ({ item, showText }: ItemProps) => {
                 {item.icon && <Icon As={item.icon} size="20px" style={ICON_STYLE} />}
                 {showText && <div>{item.name}</div>}
                 {showText && item.children?.length && <Icon As={ImCtrl} size="20px" style={EXPAND_ICON_STYLE} />}
-            </ItemContainer>
+            </Wrapper>
             {isHover && hasChildren && (
                 <Stack onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
-                    <UL>{renderSubMenuItems()}</UL>
+                    <Ul>{renderSubMenuItems()}</Ul>
                 </Stack>
             )}
-        </LI>
+        </Li>
     )
 }
 

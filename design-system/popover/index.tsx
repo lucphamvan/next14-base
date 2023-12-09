@@ -8,7 +8,7 @@ import { BoxShadow, Color } from "../config/color"
 const StyledPopoverContent = styled(ChakraPopOverContent)`
     background: rgb(40, 55, 56);
     background: linear-gradient(120deg, rgba(40, 55, 56, 1), rgb(27, 38, 39));
-    color: ${Color.TextLight};
+    color: ${Color.TextPrimary};
     box-shadow: ${BoxShadow.Default};
     border-radius: 4px;
     border: none;

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 
-export const UL = styled.ul`
+export const Ul = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
@@ -9,7 +9,7 @@ export const UL = styled.ul`
     gap: 0.5rem;
 `
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;

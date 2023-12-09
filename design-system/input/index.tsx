@@ -11,7 +11,7 @@ const borderFocusStyle = `1px solid ${Color.Primary}`
 const borderErrorStyle = `1px solid ${Color.Error}`
 
 const BaseInput = styled(ChakraInput)`
-    color: ${Color.TextLight};
+    color: ${Color.TextPrimary};
     background-color: unset;
     font-weight: 400;
     padding: 0.375rem 1rem;
@@ -20,7 +20,7 @@ const BaseInput = styled(ChakraInput)`
     border: ${borderStyle};
     box-shadow: none !important;
     ::placeholder {
-        color: ${Color.TextGray};
+        color: ${Color.TextSecondary};
         font-size: 0.95rem;
         font-weight: 300;
     }

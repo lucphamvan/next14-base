@@ -1,7 +1,7 @@
 import { BoxShadow, Color, Font } from "@/design-system"
 import styled from "@emotion/styled"
 
-export const UL = styled.ul`
+export const Ul = styled.ul`
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -13,17 +13,17 @@ export const UL = styled.ul`
     background-color: ${Color.BgMenu};
 `
 
-export const LI = styled.li`
+export const Li = styled.li`
     position: relative;
     padding: 0;
 `
 
-interface ItemContainerProps {
+interface WrapperProps {
     $isActive: boolean
     $isHover: boolean
 }
 
-export const ItemContainer = styled.div<ItemContainerProps>`
+export const Wrapper = styled.div<WrapperProps>`
     cursor: pointer;
     align-items: center;
     display: flex;
@@ -36,7 +36,7 @@ export const ItemContainer = styled.div<ItemContainerProps>`
 
     transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
     background-color: ${({ $isActive, $isHover }) => ($isActive || $isHover ? `${Color.BgMenu}` : "transparent")};
-    color: ${({ $isActive, $isHover }) => ($isActive || $isHover ? Color.TextLight : Color.TextGray)};
+    color: ${({ $isActive, $isHover }) => ($isActive || $isHover ? Color.TextPrimary : Color.TextSecondary)};
     &:hover {
         background-color: ${Color.BgMenu};
     }

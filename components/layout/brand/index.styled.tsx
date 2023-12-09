@@ -1,7 +1,7 @@
 import { Color, Font } from "@/design-system"
 import styled from "@emotion/styled"
 
-export const Name = styled.div`
+export const Text = styled.div`
     font-size: 1.35rem;
     font-weight: 700;
     color: ${Color.Primary};
@@ -11,7 +11,7 @@ export const Name = styled.div`
     margin-top: 0.25rem;
 `
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
     display: flex;
     gap: 0.5rem;
     align-items: center;

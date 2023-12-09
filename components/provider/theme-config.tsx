@@ -7,7 +7,7 @@ export const customTheme: ThemeOverride = {
             body: {
                 minHeight: "100vh",
                 backgroundColor: Color.BgDark,
-                color: Color.TextLight,
+                color: Color.TextPrimary,
                 height: "100%"
             },
             html: {

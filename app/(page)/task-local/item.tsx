@@ -62,7 +62,7 @@ const TaskItem = ({ task, finishTask, unFinishTask, removeTask, startTask }: Pro
                     <Icon as={ImFire} onClick={() => removeTask(task.id)} />
                 </Tooltip>
             </Flex>
-            <Text as="span" fontSize="12.5px" color={Color.TextGray}>
+            <Text as="span" fontSize="12.5px" color={Color.TextSecondary}>
                 Updated at {formatDate(new Date(task.updatedAt))}
             </Text>
             {isInProgress && (

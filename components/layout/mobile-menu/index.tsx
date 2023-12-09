@@ -5,14 +5,14 @@ import Brand from "../brand"
 import { LayoutContext } from "../context"
 import { MediaQuery, useMediaQuery } from "../hook/useMediaQuery"
 import { Menu as MenuType } from "../menu/type"
-import { BrandContainer, Container, Overlay, UL } from "./index.styled"
+import { Container, Overlay, Ul, Wrapper } from "./index.styled"
 import Item from "./item"
 
-interface MobileMenuProps {
+interface Props {
     menu: MenuType[]
 }
 
-export const MobileMenu = ({ menu }: MobileMenuProps) => {
+export const MobileMenu = ({ menu }: Props) => {
     const isMobile = useMediaQuery(MediaQuery.Mobile)
     const { isOpenMobileMenu, onToggleMobileMenu } = useContext(LayoutContext)
 
@@ -25,10 +25,10 @@ export const MobileMenu = ({ menu }: MobileMenuProps) => {
     return (
         <Overlay $isShow={isOpenMobileMenu} onClick={onToggleMobileMenu}>
             <Container $isShow={isOpenMobileMenu} onClick={(e) => e.stopPropagation()}>
-                <BrandContainer>
+                <Wrapper>
                     <Brand name={BRAND_NAME} />
-                </BrandContainer>
-                <UL>{ListItems}</UL>
+                </Wrapper>
+                <Ul>{ListItems}</Ul>
             </Container>
         </Overlay>
     )
