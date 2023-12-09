@@ -1,8 +1,11 @@
-import { Color, Font, Title } from "@/design-system"
+import { Font } from "@/config/font"
+import { Title } from "@/design-system"
+import useColor from "@/hook/useColor"
 import { Divider, Flex, Icon, Stack, Text } from "@chakra-ui/react"
 import { ImRocket } from "react-icons/im"
 
 const HeadingView = () => {
+    const Color = useColor()
     return (
         <Stack>
             <Title fontSize="2xl" fontWeight="700">

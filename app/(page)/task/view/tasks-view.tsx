@@ -1,4 +1,5 @@
-import { Color, Title } from "@/design-system"
+import { Title } from "@/design-system"
+import useColor from "@/hook/useColor"
 import { TaskStatus } from "@/model/task"
 import { Grid, GridItem, Stack } from "@chakra-ui/react"
 import { Suspense } from "react"
@@ -9,6 +10,7 @@ interface Props {
     renderTask: (status: TaskStatus) => JSX.Element[]
 }
 const TasksView = ({ renderTask }: Props) => {
+    const Color = useColor()
     return (
         <Suspense fallback={<Page />}>
             <Grid

@@ -1,4 +1,4 @@
-import { Color } from "@/design-system"
+import useColor from "@/hook/useColor"
 import { useRouter } from "next/navigation"
 import { useContext, useMemo, useState } from "react"
 import { ImCtrl } from "react-icons/im"
@@ -20,6 +20,7 @@ const ICON_STYLE = { paddingBottom: "0.125rem" }
 
 const Item = ({ item, showText }: Props) => {
     const router = useRouter()
+    const Color = useColor()
     const { setActiveItem, activeItem } = useContext(LayoutContext)
     const [ref, event] = useRipple({ color: Color.Ripple })
 

@@ -3,11 +3,11 @@
 import { CardBody, CardProps, Card as ChakraCard } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 
-import { BoxShadow, Color } from "../config/color"
+import { BoxShadow } from "../../config/color"
 
 const StyledCard = styled(ChakraCard)`
-    background-color: ${({ bg }) => bg || Color.BgCard};
-    color: ${Color.TextPrimary};
+    background-color: ${({ bg, theme: { Color } }) => bg || Color.BgCard};
+    color: ${({ theme: { Color } }) => Color.TextPrimary};
     box-shadow: ${BoxShadow.Toast};
 `
 

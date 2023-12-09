@@ -1,11 +1,10 @@
 "use client"
 
-import { Color } from "@/design-system"
 import { Icon as ChakraIcon, Tooltip } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 
 export const Icon = styled(ChakraIcon)`
-    color: ${Color.Primary};
+    color: ${({ theme }) => theme.Color.Primary};
     cursor: pointer;
     font-size: 16px;
     &:hover {

@@ -1,10 +1,10 @@
-import { Color, Font } from "@/design-system"
+import { Font } from "@/config/font"
 import styled from "@emotion/styled"
 
 export const Text = styled.div`
     font-size: 1.35rem;
     font-weight: 700;
-    color: ${Color.Primary};
+    color: ${({ theme }) => theme.Color.Primary};
     ${Font.brand.style}
     /* text-transform: uppercase; */
     white-space: nowrap;
@@ -27,7 +27,7 @@ export const Center = styled.div`
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    background-color: ${Color.BgMenu};
+    background-color: ${({ theme }) => theme.Color.BgMenu};
     min-width: 40px;
     min-height: 40px;
 `

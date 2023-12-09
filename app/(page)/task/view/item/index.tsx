@@ -1,4 +1,6 @@
-import { Badge, BoxShadow, Color } from "@/design-system"
+import { BoxShadow } from "@/config/color"
+import { Badge } from "@/design-system"
+import useColor from "@/hook/useColor"
 import { Task, TaskStatus } from "@/model/task"
 import { formatDate } from "@/utils/date.util"
 import { Flex, Stack, Text } from "@chakra-ui/react"
@@ -7,6 +9,23 @@ import React from "react"
 import { ImCheckmark, ImFire, ImPlay, ImRedo, ImStop } from "react-icons/im"
 
 import { HintText, Icon } from "./index.styled"
+
+const StyledStack = styled(Stack)`
+    background: linear-gradient(120deg, rgba(40, 55, 56, 1), #263233);
+    color: ${({ theme }) => theme.Color.TextPrimary};
+    box-shadow: ${BoxShadow.Toast};
+    border-radius: 4px;
+    border: none;
+    padding: 1rem;
+`
+
+const Tooltip = ({ label, children, ...props }: { label: string; children: React.ReactNode; className?: string }) => {
+    return (
+        <HintText label={label} placement="top" hasArrow bg="gray.600" {...props} className="custom-tooltip">
+            <Flex>{children}</Flex>
+        </HintText>
+    )
+}
 
 interface Props {
     task: Task
@@ -17,23 +36,8 @@ interface Props {
     status: string
 }
 
-const Tooltip = ({ label, children, ...props }: { label: string; children: React.ReactNode; className?: string }) => {
-    return (
-        <HintText label={label} placement="top" hasArrow bg="gray.600" {...props} className="custom-tooltip">
-            <Flex>{children}</Flex>
-        </HintText>
-    )
-}
-
-const StyledStack = styled(Stack)`
-    background: linear-gradient(120deg, rgba(40, 55, 56, 1), #263233);
-    color: ${Color.TextPrimary};
-    box-shadow: ${BoxShadow.Toast};
-    border-radius: 4px;
-    border: none;
-    padding: 1rem;
-`
 const TaskItem = ({ task, finishTask, unFinishTask, removeTask, startTask }: Props) => {
+    const Color = useColor()
     const isInProgress = task.status === TaskStatus.IN_PROGRESS
     const isDone = task.status === TaskStatus.DONE
     const isTodo = task.status === TaskStatus.TODO

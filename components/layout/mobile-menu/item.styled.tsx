@@ -1,4 +1,4 @@
-import { Color, Font } from "@/design-system"
+import { Font } from "@/config/font"
 import styled from "@emotion/styled"
 
 export const Li = styled.li`
@@ -10,15 +10,15 @@ export const Flex = styled.div<{ $isActive: boolean }>`
     align-items: center;
     cursor: pointer;
     ${Font.title.style};
-    color: ${({ $isActive }) => ($isActive ? Color.TextPrimary : Color.TextSecondary)};
+    color: ${({ $isActive, theme: { Color } }) => ($isActive ? Color.TextPrimary : Color.TextSecondary)};
     gap: 0.75rem;
     min-height: 40px;
     padding: 0.5rem 1rem;
     font-weight: 400;
     border-radius: 4px;
-    background-color: ${({ $isActive }) => ($isActive ? `${Color.BgMenu}` : "transparent")};
+    background-color: ${({ $isActive, theme: { Color } }) => ($isActive ? `${Color.BgMenu}` : "transparent")};
     &:hover {
-        background-color: ${Color.BgMenu};
+        background-color: ${({ theme }) => theme.Color.BgMenu};
     }
     position: relative;
 `

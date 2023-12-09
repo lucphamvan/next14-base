@@ -1,9 +1,9 @@
+"use client"
+
 import { Box, Center } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 import { IconType } from "react-icons"
 import { IoCheckmarkCircle, IoCloseCircleSharp, IoInformationCircle, IoWarningSharp } from "react-icons/io5"
-
-import { Color } from ".."
 
 export interface Info {
     verticalLine: string
@@ -65,14 +65,14 @@ export const StyledContentBox = styled(Box)`
     padding-left: 0;
 `
 
-export const StyledCloseBox = styled(Center)`
+export const StyledCloseBox = styled(Center)<{ color: string }>`
     position: absolute;
     top: 0.25rem;
     right: 0.25rem;
     cursor: pointer;
     border-radius: 50%;
     &:hover {
-        background: ${Color.OutlineHover};
+        background: ${(prop) => prop.color};
     }
 `
 

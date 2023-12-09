@@ -1,7 +1,12 @@
-import { Color, Font, Title } from "@/design-system"
+"use client"
+
+import { Font } from "@/config/font"
+import { Title } from "@/design-system"
+import useColor from "@/hook/useColor"
 import { Box, Center, Divider, Flex } from "@chakra-ui/react"
 
 const NotFoundPage = () => {
+    const Color = useColor()
     return (
         <Center height="100%">
             <Flex alignItems="center" gap="8">

@@ -4,7 +4,6 @@ import { FormControl as ChakraFormControl, FormLabel as ChakraFormLabel } from "
 import styled from "@emotion/styled"
 import { FieldErrors, FieldValues } from "react-hook-form"
 
-import { Color } from "../config/color"
 import { FormError } from "./form-error"
 
 export const FormControl = styled(ChakraFormControl)``
@@ -12,9 +11,9 @@ export const FormControl = styled(ChakraFormControl)``
 export const FormLabel = styled(ChakraFormLabel)`
     font-size: 0.875rem;
     font-weight: ${(props) => (props.fontWeight ? props.fontWeight : 400)};
-    color: ${Color.TextPrimary};
+    color: ${(props) => props.theme.Color.TextPrimary};
     span[role="presentation"] {
-        color: ${Color.Error};
+        color: ${(props) => props.theme.Color.Error};
     }
     margin-bottom: 0.25rem;
 `

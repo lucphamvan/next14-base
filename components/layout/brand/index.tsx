@@ -1,4 +1,4 @@
-import { Color } from "@/design-system"
+import useColor from "@/hook/useColor"
 import Link from "next/link"
 import { useContext } from "react"
 import { ImMenu } from "react-icons/im"
@@ -14,8 +14,10 @@ interface Props {
 }
 
 const Brand = ({ name }: Props) => {
+    const Color = useColor()
     const { onToggleMenu, onToggleMobileMenu } = useContext(LayoutContext)
     const isMobile = useMediaQuery(MediaQuery.Mobile)
+
     return (
         <Styled.Wrapper>
             {isMobile ? (

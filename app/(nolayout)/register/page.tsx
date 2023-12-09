@@ -1,10 +1,12 @@
 "use client"
 
-import { Button, Card, Color, Font, FormGroup, Input, InputGroup, InputRightElement, Title } from "@/design-system"
+import { Font } from "@/config/font"
+import { Button, Card, FormGroup, Input, InputGroup, InputRightElement, Title } from "@/design-system"
 import { useNotify } from "@/design-system/toast"
+import useColor from "@/hook/useColor"
 import { CreateUserInput } from "@/model/user"
 import { createUser } from "@/service/user.service"
-import { Container, Flex, Grid, GridItem, Icon, Stack } from "@chakra-ui/react"
+import { Container, Flex, Icon, Stack } from "@chakra-ui/react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -30,6 +32,7 @@ const schema = z
     )
 
 const Page = () => {
+    const Color = useColor()
     const {
         handleSubmit,
         formState: { errors, isSubmitting },

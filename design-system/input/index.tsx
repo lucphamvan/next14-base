@@ -4,23 +4,21 @@ import { Input as ChakraInput, InputProps } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 import React from "react"
 
-import { Color } from "../config/color"
-
-const borderStyle = `1px solid ${Color.Border}`
-const borderFocusStyle = `1px solid ${Color.Primary}`
-const borderErrorStyle = `1px solid ${Color.Error}`
+const borderStyle = (Color: any) => `1px solid ${Color.Border}`
+const borderFocusStyle = (Color: any) => `1px solid ${Color.Primary}`
+const borderErrorStyle = (Color: any) => `1px solid ${Color.Error}`
 
 const BaseInput = styled(ChakraInput)`
-    color: ${Color.TextPrimary};
+    color: ${({ theme: { Color } }) => Color.TextPrimary};
     background-color: unset;
     font-weight: 400;
     padding: 0.375rem 1rem;
     box-sizing: border-box;
     outline: none;
-    border: ${borderStyle};
+    border: ${({ theme: { Color } }) => borderStyle(Color)};
     box-shadow: none !important;
     ::placeholder {
-        color: ${Color.TextSecondary};
+        color: ${({ theme: { Color } }) => Color.TextSecondary};
         font-size: 0.95rem;
         font-weight: 300;
     }
@@ -28,11 +26,11 @@ const BaseInput = styled(ChakraInput)`
 
 const FlushInput = styled(BaseInput)`
     border: none;
-    border-bottom: 1px solid ${Color.Border};
+    border-bottom: 1px solid ${({ theme: { Color } }) => Color.Border};
     &:focus,
     &:focus-within,
     &:hover {
-        border-bottom: ${borderFocusStyle};
+        border-bottom: ${({ theme: { Color } }) => borderFocusStyle(Color)};
     }
 `
 
@@ -41,10 +39,10 @@ const OutlineInput = styled(BaseInput)`
     &:focus,
     &:focus-within,
     &:hover {
-        border: ${borderFocusStyle};
+        border: ${({ theme: { Color } }) => borderFocusStyle(Color)};
     }
     &[aria-invalid="true"] {
-        border: ${borderErrorStyle};
+        border: ${({ theme: { Color } }) => borderErrorStyle(Color)};
     }
 `
 

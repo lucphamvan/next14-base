@@ -1,4 +1,3 @@
-import { Color } from "@/design-system"
 import styled from "@emotion/styled"
 
 import { Media } from "./menu.config"
@@ -39,7 +38,7 @@ export const StyledSidebar = styled.div<{ isExpand: boolean }>`
 export const StyledHeader = styled.div`
     width: 100%;
     height: 64px;
-    background-color: ${Color.BgDark};
+    background-color: ${({ theme }) => theme.Color.BgMain};
     position: fixed;
     z-index: 2;
     display: flex;

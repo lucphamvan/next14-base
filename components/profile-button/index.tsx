@@ -1,10 +1,12 @@
-import { Color, List, ListIcon, ListItem, Popover, PopoverContent, PopoverTrigger } from "@/design-system"
+import { List, ListIcon, ListItem, Popover, PopoverContent, PopoverTrigger } from "@/design-system"
+import useColor from "@/hook/useColor"
 import { Avatar, Stack, Text } from "@chakra-ui/react"
 import { signOut, useSession } from "next-auth/react"
 import { MdLogout } from "react-icons/md"
 
 export const ProfileButton = () => {
     const { data, status } = useSession()
+    const Color = useColor()
 
     if (status === "unauthenticated") {
         return null

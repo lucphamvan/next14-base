@@ -1,6 +1,8 @@
 "use client"
 
-import { Button, Card, Color, Font, Input, Title } from "@/design-system"
+import { Font } from "@/config/font"
+import { Button, Card, Input, Title } from "@/design-system"
+import useColor from "@/hook/useColor"
 import { Box, Divider, Flex, Grid, GridItem, Icon, Stack, Text } from "@chakra-ui/react"
 import { Suspense, useCallback } from "react"
 import { ImRocket } from "react-icons/im"
@@ -11,6 +13,7 @@ import Loading from "./loading"
 
 const Page = () => {
     const { text, tasks, finishTask, handleAddTask, handleKeyDown, onTextChange, removeTask, unFinishTask, startTask } = useTask()
+    const Color = useColor()
 
     const renderTask = useCallback(
         (status: TaskStatus) => {

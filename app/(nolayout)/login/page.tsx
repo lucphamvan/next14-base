@@ -1,6 +1,8 @@
 "use client"
 
-import { Badge, Button, Card, Color, Font, FormGroup, Input, InputGroup, InputRightElement, Title } from "@/design-system"
+import { Font } from "@/config/font"
+import { Badge, Button, Card, FormGroup, Input, InputGroup, InputRightElement, Title } from "@/design-system"
+import useColor from "@/hook/useColor"
 import { Box, Container, Flex, Icon, Stack, useToast } from "@chakra-ui/react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { signIn } from "next-auth/react"
@@ -17,6 +19,7 @@ const schema = z.object({
 })
 
 const LoginPage = () => {
+    const Color = useColor()
     const searchParams = useSearchParams()
     const callbackUrl = decodeURI(searchParams.get("callbackUrl") || "/")
     const router = useRouter()

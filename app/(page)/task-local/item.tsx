@@ -1,4 +1,5 @@
-import { Badge, Color } from "@/design-system"
+import { Badge } from "@/design-system"
+import useColor from "@/hook/useColor"
 import { formatDate } from "@/utils/date.util"
 import { Flex, Stack, Text } from "@chakra-ui/react"
 import React from "react"
@@ -25,6 +26,7 @@ const Tooltip = ({ label, children, ...props }: { label: string; children: React
 }
 
 const TaskItem = ({ task, finishTask, unFinishTask, removeTask, startTask }: Props) => {
+    const Color = useColor()
     const isInProgress = task.status === TaskStatus.IN_PROGRESS
     const isDone = task.status === TaskStatus.DONE
     const isTodo = task.status === TaskStatus.TODO

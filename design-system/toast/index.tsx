@@ -1,10 +1,10 @@
 "use client"
 
+import useColor from "@/hook/useColor"
 import { Box, Icon, useToast as useChakraToast } from "@chakra-ui/react"
 import { IoCloseOutline } from "react-icons/io5"
 
-import { Color } from "../config/color"
-import { Font } from "../config/font"
+import { Font } from "../../config/font"
 import { StyledCloseBox, StyledContainer, StyledContentBox, StyledIconBox, StyledVerticalLine, ToastType, toastInfo } from "./index.styled"
 
 interface Props {
@@ -15,6 +15,7 @@ interface Props {
 }
 
 const ToastMessage = ({ title, message, type, onClose }: Props) => {
+    const Color = useColor()
     return (
         <StyledContainer type={type}>
             <StyledIconBox>
@@ -33,7 +34,7 @@ const ToastMessage = ({ title, message, type, onClose }: Props) => {
                     </Box>
                 )}
             </StyledContentBox>
-            <StyledCloseBox onClick={onClose}>
+            <StyledCloseBox onClick={onClose} color={Color.OutlineHover}>
                 <Icon as={IoCloseOutline} color="white" boxSize="6" />
             </StyledCloseBox>
         </StyledContainer>

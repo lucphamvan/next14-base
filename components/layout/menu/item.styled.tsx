@@ -1,4 +1,5 @@
-import { BoxShadow, Color, Font } from "@/design-system"
+import { BoxShadow } from "@/config/color"
+import { Font } from "@/config/font"
 import styled from "@emotion/styled"
 
 export const Ul = styled.ul`
@@ -10,7 +11,7 @@ export const Ul = styled.ul`
     padding: 0.25rem 0;
     margin-left: 0.5rem;
     border-radius: 4px;
-    background-color: ${Color.BgMenu};
+    background-color: ${({ theme }) => theme.Color.BgMenu};
 `
 
 export const Li = styled.li`
@@ -35,10 +36,10 @@ export const Wrapper = styled.div<WrapperProps>`
     ${Font.title.style};
 
     transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-    background-color: ${({ $isActive, $isHover }) => ($isActive || $isHover ? `${Color.BgMenu}` : "transparent")};
-    color: ${({ $isActive, $isHover }) => ($isActive || $isHover ? Color.TextPrimary : Color.TextSecondary)};
+    background-color: ${({ $isActive, $isHover, theme: { Color } }) => ($isActive || $isHover ? `${Color.BgMenu}` : "transparent")};
+    color: ${({ $isActive, $isHover, theme: { Color } }) => ($isActive || $isHover ? Color.TextPrimary : Color.TextSecondary)};
     &:hover {
-        background-color: ${Color.BgMenu};
+        background-color: ${({ theme }) => theme.Color.BgMenu};
     }
     box-shadow: ${({ $isActive, $isHover }) => ($isActive || $isHover ? `${BoxShadow.Toast}` : "unset")};
 `

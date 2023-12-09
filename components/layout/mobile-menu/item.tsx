@@ -1,4 +1,4 @@
-import { Color } from "@/design-system"
+import useColor from "@/hook/useColor"
 import { useRouter } from "next/navigation"
 import { CSSProperties, useContext, useMemo } from "react"
 import { ImCtrl } from "react-icons/im"
@@ -20,6 +20,7 @@ interface Props {
 }
 
 const Item = ({ item }: Props) => {
+    const Color = useColor()
     const { activeItem, setActiveItem, onToggleMobileMenu } = useContext(LayoutContext)
     const { isOpen, onToggle: onToggleCollapse } = useDisclosure()
     const router = useRouter()
