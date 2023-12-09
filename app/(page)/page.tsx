@@ -24,7 +24,7 @@ export default function Home() {
                     <Button onClick={() => showToast("success")}>Show Success</Button>
                     <Button onClick={() => showToast("info")}>Show Info</Button>
                     <Button onClick={() => showToast("warning")}>Show Warning</Button>
-                    <Button variant="outline" disabled onClick={() => signOut()}>
+                    <Button variant="outline" isDisabled onClick={() => signOut()}>
                         Logout
                     </Button>
                 </Flex>

@@ -8,34 +8,37 @@ import { Color } from "../config/color"
 
 const StyledButton = styled(ChakraButton)`
     border-radius: 0.25rem;
-    padding: 0.5rem 1.5rem;
-    text-transform: uppercase;
+    padding: 6px 16px;
+    /* text-transform: uppercase; */
     font-weight: 600;
     color: ${Color.TextBtn};
     background-color: ${Color.Primary};
+    background: linear-gradient(90deg, #b2f35f 0%, #bbe77d 100%);
     &:hover {
         background-color: ${Color.PrimaryHover};
+        background: linear-gradient(90deg, #9eda51 0%, #aacc7b 100%);
     }
     height: initial;
 `
 
 const OutlineButton = styled(StyledButton)`
-    background-color: transparent;
+    background: transparent;
     border: 1px solid ${Color.Primary};
     color: ${Color.Primary};
     font-weight: 400;
     &:hover {
-        background-color: ${Color.OutlineHover};
+        background: ${Color.OutlineHover};
     }
 `
 
 const DisabledButton = styled(StyledButton)`
-    background-color: ${Color.TextSecondary};
+    background: ${Color.TextSecondary};
     color: ${Color.BgDark};
     &:hover {
-        background-color: ${Color.TextSecondary};
+        background: ${Color.TextSecondary} !important;
     }
-    cursor: initial;
+    border: none;
+    cursor: initial !important;
 `
 
 export const Button = (props: ButtonProps) => {
@@ -43,7 +46,7 @@ export const Button = (props: ButtonProps) => {
         color: Color.RipleBtn
     })
 
-    if (props.disabled) {
+    if (props.isDisabled) {
         return <DisabledButton maxW="fit-content" {...props} />
     }
 

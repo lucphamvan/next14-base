@@ -49,6 +49,9 @@ const authOptions: NextAuthConfig = {
                 return true
             }
             if (!isLoggedIn) {
+                if (nextUrl.pathname === "/") {
+                    return Response.redirect(new URL("/login", nextUrl))
+                }
                 return Response.redirect(new URL("/login?callbackUrl=" + nextUrl.href, nextUrl))
             }
             return isLoggedIn
