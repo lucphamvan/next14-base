@@ -1,4 +1,3 @@
-import { BoxShadow } from "@/config/color"
 import { Font } from "@/config/font"
 import styled from "@emotion/styled"
 
@@ -41,7 +40,7 @@ export const Wrapper = styled.div<WrapperProps>`
     &:hover {
         background-color: ${({ theme }) => theme.Color.BgMenu};
     }
-    box-shadow: ${({ $isActive, $isHover }) => ($isActive || $isHover ? `${BoxShadow.Toast}` : "unset")};
+    box-shadow: ${({ $isActive, $isHover, theme }) => ($isActive || $isHover ? `${theme.Color.BoxShadow_Toast}` : "unset")};
 `
 export const Stack = styled.div`
     display: flex;

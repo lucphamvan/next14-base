@@ -1,4 +1,3 @@
-import { BoxShadow } from "@/config/color"
 import { Badge } from "@/design-system"
 import useColor from "@/hook/useColor"
 import { Task, TaskStatus } from "@/model/task"
@@ -13,7 +12,7 @@ import { Icon } from "./index.styled"
 const StyledStack = styled(Stack)`
     background: linear-gradient(120deg, rgba(40, 55, 56, 1), #263233);
     color: ${({ theme }) => theme.Color.TextPrimary};
-    box-shadow: ${BoxShadow.Toast};
+    box-shadow: ${({ theme }) => theme.Color.BoxShadow_Toast};
     border-radius: 4px;
     border: none;
     padding: 1rem;

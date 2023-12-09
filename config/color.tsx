@@ -15,12 +15,14 @@ export enum DarkColor {
     PrimaryHover = "#a1e34d",
     OutlineHover = "#b3f35f24",
     Error = "#db6050",
-    BgCardItem = "#283738"
+    BgCardItem = "#283738",
+    BoxShadow_Toast = "#1c24259f 0px 2px 16px 0px",
+    BoxShadow_Default = "#161e1fa0 0px 2px 6px 0px"
 }
 
 export enum LightColor {
     BgMain = "#ffffff",
-    BgCard = "#202c2d",
+    BgCard = "#ffffff",
     BgMenu = "#2c3e3f",
     BgInput = "#425455",
     BgToast = "#263335",
@@ -35,10 +37,7 @@ export enum LightColor {
     PrimaryHover = "#a1e34d",
     OutlineHover = "#b3f35f24",
     Error = "#db6050",
-    BgCardItem = "#283738"
-}
-
-export enum BoxShadow {
-    Default = "#161e1fa0 0px 2px 6px 0px",
-    Toast = "#1c24259f 0px 2px 16px 0px"
+    BgCardItem = "#283738",
+    BoxShadow_Toast = "#1c24259f 0px 2px 16px 0px",
+    BoxShadow_Default = "#161e1fa0 0px 2px 6px 0px"
 }
