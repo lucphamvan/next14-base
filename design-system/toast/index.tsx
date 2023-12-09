@@ -35,7 +35,7 @@ const ToastMessage = ({ title, message, type, onClose }: Props) => {
                 )}
             </StyledContentBox>
             <StyledCloseBox onClick={onClose} color={Color.OutlineHover}>
-                <Icon as={IoCloseOutline} color="white" boxSize="6" />
+                <Icon as={IoCloseOutline} color="white" boxSize="5" />
             </StyledCloseBox>
         </StyledContainer>
     )

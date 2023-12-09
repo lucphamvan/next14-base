@@ -1,6 +1,6 @@
 import { Provider } from "@/components/provider"
+import { Font } from "@/config/font"
 import { BRAND_NAME } from "@/config/meta"
-import { Font } from "@/design-system"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {

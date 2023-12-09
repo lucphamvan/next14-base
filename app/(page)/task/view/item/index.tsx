@@ -3,12 +3,12 @@ import { Badge } from "@/design-system"
 import useColor from "@/hook/useColor"
 import { Task, TaskStatus } from "@/model/task"
 import { formatDate } from "@/utils/date.util"
-import { Flex, Stack, Text } from "@chakra-ui/react"
+import { Flex, Stack, Text, Tooltip } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 import React from "react"
 import { ImCheckmark, ImFire, ImPlay, ImRedo, ImStop } from "react-icons/im"
 
-import { HintText, Icon } from "./index.styled"
+import { Icon } from "./index.styled"
 
 const StyledStack = styled(Stack)`
     background: linear-gradient(120deg, rgba(40, 55, 56, 1), #263233);
@@ -19,11 +19,11 @@ const StyledStack = styled(Stack)`
     padding: 1rem;
 `
 
-const Tooltip = ({ label, children, ...props }: { label: string; children: React.ReactNode; className?: string }) => {
+const HintText = ({ label, children }: { label: string; children: React.ReactNode }) => {
     return (
-        <HintText label={label} placement="top" hasArrow bg="gray.600" {...props} className="custom-tooltip">
+        <Tooltip label={label} placement="top" py="2" rounded="4px" bg="gray.600" _dark={{ bg: "gray.600" }}>
             <Flex>{children}</Flex>
-        </HintText>
+        </Tooltip>
     )
 }
 
@@ -48,32 +48,32 @@ const TaskItem = ({ task, finishTask, unFinishTask, removeTask, startTask }: Pro
             <Flex alignItems="center" gap="2">
                 <Flex flexGrow={1} alignItems="center" gap="2">
                     {isTodo && (
-                        <Tooltip label="Start task">
+                        <HintText label="Start task">
                             <Icon as={ImPlay} onClick={() => startTask(task.id)} />
-                        </Tooltip>
+                        </HintText>
                     )}
                     {isInProgress && (
-                        <Tooltip label="Stop task">
+                        <HintText label="Stop task">
                             <Icon as={ImStop} onClick={() => unFinishTask(task.id)} />
-                        </Tooltip>
+                        </HintText>
                     )}
                     <Text _firstLetter={{ textTransform: "uppercase" }} textDecoration={task.status === "done" ? "line-through" : "initial"}>
                         {task.name}
                     </Text>
                 </Flex>
                 {showFinishIcon && (
-                    <Tooltip label="Finish task">
+                    <HintText label="Finish task">
                         <Icon as={ImCheckmark} onClick={() => finishTask(task.id)} />
-                    </Tooltip>
+                    </HintText>
                 )}
                 {isDone && (
-                    <Tooltip label="Unfinish task">
+                    <HintText label="Unfinish task">
                         <Icon as={ImRedo} onClick={() => unFinishTask(task.id)} />
-                    </Tooltip>
+                    </HintText>
                 )}
-                <Tooltip label="Remove task">
+                <HintText label="Remove task">
                     <Icon as={ImFire} onClick={() => removeTask(task.id)} />
-                </Tooltip>
+                </HintText>
             </Flex>
             <Text as="span" fontSize="12.5px" color={Color.TextSecondary}>
                 Updated at {formatDate(new Date(task.updatedAt))}

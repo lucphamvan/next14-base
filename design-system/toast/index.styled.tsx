@@ -71,6 +71,7 @@ export const StyledCloseBox = styled(Center)<{ color: string }>`
     right: 0.25rem;
     cursor: pointer;
     border-radius: 50%;
+    padding: 0.25rem;
     &:hover {
         background: ${(prop) => prop.color};
     }

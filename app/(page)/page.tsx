@@ -2,12 +2,12 @@
 
 import { Badge, Button, Card } from "@/design-system"
 import { useNotify } from "@/design-system/toast"
-import { Box, Flex, Stack } from "@chakra-ui/react"
+import { Box, Flex, Stack, useColorMode } from "@chakra-ui/react"
 import { signOut } from "next-auth/react"
 
 export default function Home() {
     const { notify } = useNotify()
-
+    const { toggleColorMode } = useColorMode()
     const showToast = (type: "success" | "error" | "warning" | "info") => {
         notify(type, type, "This is a sample message")
     }
@@ -26,6 +26,9 @@ export default function Home() {
                     <Button onClick={() => showToast("warning")}>Show Warning</Button>
                     <Button variant="outline" isDisabled onClick={() => signOut()}>
                         Logout
+                    </Button>
+                    <Button variant="outline" onClick={toggleColorMode}>
+                        Toggle Theme
                     </Button>
                 </Flex>
                 <Flex gap="2">

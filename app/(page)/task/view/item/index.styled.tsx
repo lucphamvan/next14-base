@@ -15,13 +15,3 @@ export const Icon = styled(ChakraIcon)`
     }
     transition: zoom 1s ease-in-out;
 `
-
-export const HintText = styled(Tooltip)`
-    &.custom-tooltip {
-        font-size: 13px;
-        font-weight: 400;
-        padding: 6px 12px;
-        min-height: 32px;
-        border-radius: 3px;
-    }
-`
