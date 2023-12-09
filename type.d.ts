@@ -1,4 +1,4 @@
-import { DarkColor, LightColor } from "@/design-system"
+import { DarkColor, LightColor } from "@/config/color"
 import { ThemeConfig } from "@chakra-ui/react"
 import { CSSProperties } from "react"
 
