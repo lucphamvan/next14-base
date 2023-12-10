@@ -10,7 +10,7 @@ export const Flex = styled.div<{ $isActive: boolean }>`
     align-items: center;
     cursor: pointer;
     ${Font.title.style};
-    color: ${({ $isActive, theme: { Color } }) => ($isActive ? Color.TextPrimary : Color.TextSecondary)};
+    color: ${({ $isActive, theme: { Color } }) => ($isActive ? Color.TextMenuActive : Color.TextSecondary)};
     gap: 0.75rem;
     min-height: 40px;
     padding: 0.5rem 1rem;

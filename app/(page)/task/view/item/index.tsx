@@ -10,7 +10,7 @@ import { ImCheckmark, ImFire, ImPlay, ImRedo, ImStop } from "react-icons/im"
 import { Icon } from "./index.styled"
 
 const StyledStack = styled(Stack)`
-    background: linear-gradient(120deg, rgba(40, 55, 56, 1), #263233);
+    background: ${({ theme }) => theme.Color.BgCardItem};
     color: ${({ theme }) => theme.Color.TextPrimary};
     box-shadow: ${({ theme }) => theme.Color.BoxShadow_Toast};
     border-radius: 4px;

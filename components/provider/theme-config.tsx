@@ -7,7 +7,7 @@ export const customTheme: ThemeOverride = {
         global: {
             body: {
                 minHeight: "100vh",
-                backgroundColor: LightColor.BgMain,
+                background: LightColor.BgMain,
                 color: LightColor.TextPrimary,
                 height: "100%"
             },
@@ -18,7 +18,7 @@ export const customTheme: ThemeOverride = {
             },
             _dark: {
                 body: {
-                    backgroundColor: DarkColor.BgMain,
+                    background: DarkColor.BgMain,
                     color: DarkColor.TextPrimary
                 }
             }
@@ -27,7 +27,7 @@ export const customTheme: ThemeOverride = {
 
     colors: {},
     config: {
-        initialColorMode: "light",
+        initialColorMode: "dark",
         useSystemColorMode: false
     }
 }

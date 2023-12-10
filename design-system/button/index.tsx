@@ -12,7 +12,7 @@ const StyledButton = styled(ChakraButton)`
     font-weight: 600;
     color: ${({ theme }) => theme.Color.TextBtn};
     background-color: ${({ theme }) => theme.Color.Primary};
-    background: linear-gradient(90deg, #b2f35f 0%, #bbe77d 100%);
+    background: ${({ theme }) => theme.Color.BgButton};
     &:hover {
         background-color: ${({ theme }) => theme.Color.PrimaryHover};
         background: linear-gradient(90deg, #9eda51 0%, #aacc7b 100%);

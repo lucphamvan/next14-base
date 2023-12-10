@@ -3,7 +3,7 @@
 import { Font } from "@/config/font"
 import { Badge, Button, Card, FormGroup, Input, InputGroup, InputRightElement, Title } from "@/design-system"
 import useColor from "@/hook/useColor"
-import { Box, Container, Flex, Icon, Stack, useToast } from "@chakra-ui/react"
+import { Box, Container, Flex, Icon, Stack, Text, useToast } from "@chakra-ui/react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { signIn } from "next-auth/react"
 import Link from "next/link"
@@ -58,10 +58,18 @@ const LoginPage = () => {
             <Flex justifyContent="center" flexWrap="wrap" width="100%">
                 <Card minW="sm">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <Stack spacing={4}>
+                        <Stack spacing={6}>
                             <Title as="h2" fontSize="2xl" fontWeight="600" className={Font.brand.className} color={Color.Primary}>
-                                Login
+                                Sign in to Intelligent X
                             </Title>
+                            <Flex fontSize="15px" gap="2">
+                                <Text>Don’t have an account</Text>
+                                <Link href="/register">
+                                    <Text color="#9ac760" textDecor="underline" fontWeight="400">
+                                        Get Start
+                                    </Text>
+                                </Link>
+                            </Flex>
                             <FormGroup name="email" errors={errors} label="Email">
                                 <Input id="email" {...register("email")} />
                             </FormGroup>
@@ -75,7 +83,7 @@ const LoginPage = () => {
                             </FormGroup>
 
                             <Button type="submit" disabled={isSubmitting}>
-                                Submit
+                                Login
                             </Button>
                         </Stack>
                     </form>

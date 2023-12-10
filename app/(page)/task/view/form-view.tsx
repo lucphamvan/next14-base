@@ -48,7 +48,7 @@ const FormView = ({ fetchTasks }: Props) => {
         <form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
             <Flex gap="4" w="100%">
                 <FormGroup errors={errors} name="name">
-                    <Input {...register("name")} placeholder="Insert your task" variant="flushed" flexGrow={1} />
+                    <Input {...register("name")} placeholder="Insert your task" variant="outline" flexGrow={1} />
                 </FormGroup>
                 <Box>
                     <Button type="submit" w="max-content" disabled={isSubmitting}>

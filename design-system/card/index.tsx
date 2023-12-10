@@ -4,7 +4,7 @@ import { CardBody, CardProps, Card as ChakraCard, theme } from "@chakra-ui/react
 import styled from "@emotion/styled"
 
 const StyledCard = styled(ChakraCard)`
-    background-color: ${({ bg, theme: { Color } }) => bg || Color.BgCard};
+    background: ${({ bg, theme: { Color } }) => bg || Color.BgCard};
     color: ${({ theme: { Color } }) => Color.TextPrimary};
     box-shadow: ${({ theme }) => theme.Color.BoxShadow_Toast};
 `

@@ -26,7 +26,7 @@ const TasksView = ({ renderTask }: Props) => {
             >
                 <GridItem>
                     <Stack spacing="6" w="100%">
-                        <Title color={Color.Primary} fontWeight="500" pl={4}>
+                        <Title color={Color.Primary} fontWeight="600" pl={4}>
                             TODO
                         </Title>
                         {renderTask(TaskStatus.TODO)}
@@ -34,7 +34,7 @@ const TasksView = ({ renderTask }: Props) => {
                 </GridItem>
                 <GridItem>
                     <Stack spacing="6" w="100%">
-                        <Title color={Color.Primary} fontWeight="500" pl={4}>
+                        <Title color={Color.Primary} fontWeight="600" pl={4}>
                             IN PROGRESS
                         </Title>
                         {renderTask(TaskStatus.IN_PROGRESS)}
@@ -42,7 +42,7 @@ const TasksView = ({ renderTask }: Props) => {
                 </GridItem>
                 <GridItem>
                     <Stack spacing="6" w="100%">
-                        <Title color={Color.Primary} fontWeight="500" pl={4}>
+                        <Title color={Color.Primary} fontWeight="600" pl={4}>
                             RECENT DONE
                         </Title>
                         {renderTask(TaskStatus.DONE)}

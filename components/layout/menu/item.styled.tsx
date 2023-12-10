@@ -10,7 +10,8 @@ export const Ul = styled.ul`
     padding: 0.25rem 0;
     margin-left: 0.5rem;
     border-radius: 4px;
-    background-color: ${({ theme }) => theme.Color.BgMenu};
+    background: ${({ theme: { isDark, Color } }) => (isDark ? Color.BgMenuHover : Color.BgCard)};
+    box-shadow: ${({ theme }) => theme.Color.BoxShadow_Toast};
 `
 
 export const Li = styled.li`
@@ -33,13 +34,22 @@ export const Wrapper = styled.div<WrapperProps>`
     border-radius: 4px;
     font-weight: 400;
     ${Font.title.style};
-
     transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-    background-color: ${({ $isActive, $isHover, theme: { Color } }) => ($isActive || $isHover ? `${Color.BgMenu}` : "transparent")};
-    color: ${({ $isActive, $isHover, theme: { Color } }) => ($isActive || $isHover ? Color.TextPrimary : Color.TextSecondary)};
-    &:hover {
+    background-color: ${({ $isActive, $isHover, theme: { Color } }) => {
+        if ($isActive && $isHover) return Color.BgMenu
+        if ($isActive) return Color.BgMenu
+        if ($isHover) return Color.BgMenuHover
+        return "transparent"
+    }};
+    color: ${({ $isActive, $isHover, theme: { Color } }) => {
+        if ($isActive && $isHover) return Color.TextMenuActive
+        if ($isActive) return Color.TextMenuActive
+        if ($isHover) return Color.TextMenuHover
+        return Color.TextSecondary
+    }};
+    /* &:hover {
         background-color: ${({ theme }) => theme.Color.BgMenu};
-    }
+    } */
     box-shadow: ${({ $isActive, $isHover, theme }) => ($isActive || $isHover ? `${theme.Color.BoxShadow_Toast}` : "unset")};
 `
 export const Stack = styled.div`

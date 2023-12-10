@@ -1,12 +1,13 @@
 "use client"
 
+import { DarkColor, LightColor } from "@/config/color"
 import { Input as ChakraInput, InputProps } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 import React from "react"
 
-const borderStyle = (Color: any) => `1px solid ${Color.Border}`
-const borderFocusStyle = (Color: any) => `1px solid ${Color.Primary}`
-const borderErrorStyle = (Color: any) => `1px solid ${Color.Error}`
+const borderStyle = (Color: typeof DarkColor | typeof LightColor) => `1px solid ${Color.Border}`
+const borderFocusStyle = (Color: typeof DarkColor | typeof LightColor) => `1px solid ${Color.Primary}`
+const borderErrorStyle = (Color: typeof DarkColor | typeof LightColor) => `1px solid ${Color.Error}`
 
 const BaseInput = styled(ChakraInput)`
     color: ${({ theme: { Color } }) => Color.TextPrimary};
@@ -20,7 +21,7 @@ const BaseInput = styled(ChakraInput)`
     ::placeholder {
         color: ${({ theme: { Color } }) => Color.TextSecondary};
         font-size: 0.95rem;
-        font-weight: 300;
+        font-weight: ${({ theme: { isDark } }) => (isDark ? 300 : 400)};
     }
 `
 
