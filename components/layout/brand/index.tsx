@@ -1,8 +1,7 @@
 import useColor from "@/hook/useColor"
 import Link from "next/link"
 import { useContext } from "react"
-import { ImMenu } from "react-icons/im"
-import { MdGrass } from "react-icons/md"
+import { ImMenu, ImQuill } from "react-icons/im"
 
 import { LayoutContext } from "../context"
 import { MediaQuery, useMediaQuery } from "../hook/useMediaQuery"
@@ -30,7 +29,7 @@ const Brand = ({ name }: Props) => {
                 </Styled.Center>
             )}
             <Styled.Wrapper style={{ paddingLeft: 10, gap: 2 }}>
-                <Icon As={MdGrass} color={Color.Primary} size="32px" />
+                <Icon As={ImQuill} color={Color.Primary} size="32px" />
                 <Styled.Text>
                     <Link href="/">{name}</Link>
                 </Styled.Text>

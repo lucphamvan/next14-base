@@ -1,5 +1,5 @@
-import { ImFilter, ImHome, ImLoop2, ImSortAmountAsc, ImUser } from "react-icons/im"
-import { IoCreateOutline, IoPersonOutline, IoSettingsOutline } from "react-icons/io5"
+import { ImQuill } from "react-icons/im"
+import { IoPersonOutline } from "react-icons/io5"
 
 import { Menu } from "./menu/type"
 
@@ -11,40 +11,15 @@ export const Media = {
 
 export const menu: Menu[] = [
     {
-        id: "task",
-        name: "Task",
-        icon: IoCreateOutline,
-        path: "/task"
+        id: "hint",
+        name: "Hint",
+        icon: ImQuill,
+        path: "/"
     },
     {
         id: "profile",
         name: "Profile",
         icon: IoPersonOutline,
         path: "/users"
-    },
-    {
-        id: "setting",
-        name: "Setting",
-        icon: IoSettingsOutline,
-        children: [
-            {
-                id: "setting-filter",
-                name: "Filter",
-                path: "/setting/filter",
-                icon: ImFilter
-            },
-            {
-                id: "setting-add",
-                name: "Add",
-                path: "/setting/add",
-                icon: ImSortAmountAsc
-            },
-            {
-                id: "setting-visit",
-                name: "Visit",
-                path: "/setting/visit",
-                icon: ImLoop2
-            }
-        ]
     }
 ]

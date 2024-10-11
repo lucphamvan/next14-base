@@ -1,4 +1,5 @@
 import { Oxanium, Roboto_Condensed } from "next/font/google"
+import localFont from "next/font/local"
 
 // const mulistFont = Mulish({
 //     weight: ["300", "400", "700", "200", "600", "800", "500", "900"],
@@ -13,6 +14,10 @@ import { Oxanium, Roboto_Condensed } from "next/font/google"
 const robotoCondensedFont = Roboto_Condensed({
     weight: ["300", "400", "700"],
     subsets: ["latin-ext"]
+})
+
+const dinFont = localFont({
+    src: "./din-medium.ttf"
 })
 
 // const robotoFont = Roboto({
@@ -32,7 +37,7 @@ const brandFont = Oxanium({
 
 export const Font = {
     primary: robotoCondensedFont,
-    title: robotoCondensedFont,
+    title: dinFont,
     secondary: robotoCondensedFont,
     brand: brandFont
 }
