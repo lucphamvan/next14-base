@@ -1,6 +1,7 @@
 import useColor from "@/hook/useColor"
 import Link from "next/link"
 import { useContext } from "react"
+import { FiMenu } from "react-icons/fi"
 import { ImMenu, ImQuill } from "react-icons/im"
 
 import { LayoutContext } from "../context"
@@ -21,11 +22,11 @@ const Brand = ({ name }: Props) => {
         <Styled.Wrapper>
             {isMobile ? (
                 <Styled.Center onClick={onToggleMobileMenu}>
-                    <Icon As={ImMenu} size="24px" color={Color.TextMenuActive} />
+                    <Icon As={FiMenu} size="24px" color={Color.TextMenuActive} />
                 </Styled.Center>
             ) : (
                 <Styled.Center onClick={onToggleMenu}>
-                    <Icon As={ImMenu} size="24px" color={Color.TextMenuActive} />
+                    <Icon As={FiMenu} size="24px" color={Color.TextMenuActive} />
                 </Styled.Center>
             )}
             <Styled.Wrapper style={{ paddingLeft: 10, gap: 2 }}>

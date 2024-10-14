@@ -21,21 +21,21 @@ const StyLoader = styled.div<{ $boxSize: number }>`
         left: 0%;
         top: 0%;
         animation: rotate-one 700ms linear infinite;
-        border-bottom: 3px solid #b2f35f;
+        border-bottom: 3px solid ${(props) => props.theme.Color.Primary};
     }
 
     .inner.two {
         right: 0%;
         top: 0%;
         animation: rotate-two 700ms linear infinite;
-        border-right: 3px solid #b2f35f;
+        border-right: 3px solid ${(props) => props.theme.Color.Primary};
     }
 
     .inner.three {
         right: 0%;
         bottom: 0%;
         animation: rotate-three 700ms linear infinite;
-        border-top: 3px solid #b2f35f;
+        border-top: 3px solid ${(props) => props.theme.Color.Primary};
     }
 
     @keyframes rotate-one {

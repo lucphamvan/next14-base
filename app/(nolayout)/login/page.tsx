@@ -65,7 +65,7 @@ const LoginPage = () => {
                             <Flex fontSize="15px" gap="2">
                                 <Text>Don’t have an account</Text>
                                 <Link href="/register">
-                                    <Text color="#9ac760" textDecor="underline" fontWeight="400">
+                                    <Text color={Color.Primary} textDecor="underline" fontWeight="400">
                                         Get Start
                                     </Text>
                                 </Link>

@@ -27,7 +27,7 @@ export const customTheme: ThemeOverride = {
 
     colors: {},
     config: {
-        initialColorMode: "dark",
+        initialColorMode: "light",
         useSystemColorMode: false
     }
 }
