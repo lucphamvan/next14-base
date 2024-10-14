@@ -1,19 +1,23 @@
-import { HintData } from "@/model/hintdata"
-import { Flex, HStack, Icon, Stack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react"
-import { MdAdd, MdCreate, MdDelete, MdEdit } from "react-icons/md"
+import Loading from "@/design-system/loading"
+import { HintData, HintFormDataInput } from "@/model/hintdata"
+import { Flex, Icon, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react"
+import { MdCreate, MdDelete } from "react-icons/md"
 
-import { tableHeader, tableKey } from "./column"
+import { tableHeader } from "./column"
 
 interface Props {
     data: HintData[]
     isLoading: boolean
+    openEditHintForm: (hintData: HintFormDataInput) => void
 }
 
-const HintDataList = ({ data, isLoading }: Props) => {
+const HintDataList = ({ data, isLoading, openEditHintForm }: Props) => {
+    if (isLoading) {
+        return <Loading boxSize={30} />
+    }
     return (
-        <TableContainer>
-            <Table variant="simple">
-                <TableCaption>Imperial to metric conversion factors</TableCaption>
+        <TableContainer userSelect="none">
+            <Table variant="simple" userSelect="text">
                 <Thead>
                     <Tr>
                         {tableHeader.map((header, index) => (
@@ -22,22 +26,32 @@ const HintDataList = ({ data, isLoading }: Props) => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {data.map((hintdata) => {
+                    {data.map((hintdata, index) => {
                         return (
                             <Tr key={hintdata.id}>
-                                {tableKey.map((key, index) => {
-                                    if (key === "id") return <Td key={key + index}>{hintdata.id}</Td>
-                                    if (key === "actions")
-                                        return (
-                                            <Td key={key + index}>
-                                                <Flex alignItems="center" gap={2}>
-                                                    <Icon as={MdEdit} cursor="pointer" />
-                                                    <Icon as={MdDelete} cursor="pointer" />
-                                                </Flex>
-                                            </Td>
-                                        )
-                                    return <Td key={key + index}>{hintdata[key as keyof HintData]}</Td>
-                                })}
+                                <Td>{index + 1}</Td>
+                                <Td>{hintdata.username}</Td>
+                                <Td>******</Td>
+                                <Td>{hintdata.catalog}</Td>
+                                <Td>{hintdata.hint}</Td>
+                                <Td>
+                                    <Flex alignItems="center" gap="2">
+                                        <Icon
+                                            as={MdCreate}
+                                            cursor="pointer"
+                                            onClick={() =>
+                                                openEditHintForm({
+                                                    username: hintdata.username,
+
+                                                    catalog: hintdata.catalog,
+                                                    hint: hintdata.hint,
+                                                    id: hintdata.id
+                                                })
+                                            }
+                                        />
+                                        <Icon as={MdDelete} cursor="pointer" />
+                                    </Flex>
+                                </Td>
                             </Tr>
                         )
                     })}

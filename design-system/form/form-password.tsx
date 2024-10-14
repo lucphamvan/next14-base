@@ -23,7 +23,7 @@ const PasswordInput = ({ label, errors, name, register }: PasswordInputProps) =>
     return (
         <FormGroup name={name} errors={errors} label={label}>
             <InputGroup>
-                <Input type={pwdType} id="password" {...register("password")} />
+                <Input type={pwdType} id="password" placeholder="******" {...register("password")} />
                 <InputRightElement cursor="pointer" onClick={togglePassword}>
                     {pwdIcon}
                 </InputRightElement>

@@ -62,29 +62,29 @@ const Page = () => {
             <Flex justifyContent="center" flexWrap="wrap" width="100%">
                 <Card w={["sm", "sm", "sm"]}>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <Stack spacing={6}>
+                        <Stack>
                             <Title as="h2" fontSize="2xl" fontWeight="600" className={Font.brand.className} color={Color.Primary}>
                                 Register
                             </Title>
-                            <FormGroup name="name" errors={errors}>
-                                <Input id="name" {...register("name")} placeholder="User name" />
+                            <FormGroup name="name" errors={errors} label="User name">
+                                <Input id="name" {...register("name")} />
                             </FormGroup>
-                            <FormGroup name="email" errors={errors}>
-                                <Input id="email" {...register("email")} placeholder="Email" />
+                            <FormGroup name="email" errors={errors} label="Email">
+                                <Input id="email" {...register("email")} />
                             </FormGroup>
 
-                            <FormGroup name="password" errors={errors}>
+                            <FormGroup name="password" errors={errors} label="Password">
                                 <InputGroup>
-                                    <Input type={pwdType} id="password" {...register("password")} placeholder="Password" />
+                                    <Input type={pwdType} id="password" {...register("password")} />
                                     <InputRightElement cursor="pointer" onClick={togglePassword}>
                                         {pwdIcon}
                                     </InputRightElement>
                                 </InputGroup>
                             </FormGroup>
 
-                            <FormGroup name="confirmPassword" errors={errors}>
+                            <FormGroup name="confirmPassword" errors={errors} label="Confirm password">
                                 <InputGroup>
-                                    <Input type={pwdType} id="confirmPassword" {...register("confirmPassword")} placeholder="Confirm password" />
+                                    <Input type={pwdType} id="confirmPassword" {...register("confirmPassword")} />
                                     <InputRightElement cursor="pointer" onClick={togglePassword}>
                                         {pwdIcon}
                                     </InputRightElement>

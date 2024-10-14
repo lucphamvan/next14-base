@@ -23,7 +23,7 @@ export const getHintData = async (id: string, token: string) => {
 }
 
 export const updateHintData = async (data: Partial<HintFormDataInput>, token: string) => {
-    const response = await api.patch(API.HINTDATA, data, withToken(token))
+    const response = await api.put(API.HINTDATA, data, withToken(token))
     return response.data as HintData
 }
 

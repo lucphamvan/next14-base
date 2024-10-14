@@ -27,12 +27,18 @@ const HintModule = () => {
     } = useQuery({
         queryKey: ["hint-data", accessToken],
         queryFn: () => getListHintData(accessToken),
-        refetchInterval: 1000
+        refetchInterval: 10000
     })
 
     const openCreateHintForm = () => {
         setTypeForm("create")
         setDefaultHintFormValue(undefined)
+        onToggle()
+    }
+
+    const openEditHintForm = (hintData: HintFormDataInput) => {
+        setTypeForm("edit")
+        setDefaultHintFormValue(hintData)
         onToggle()
     }
 
@@ -47,7 +53,7 @@ const HintModule = () => {
                 </Button>
                 <HintForm refetch={refetch} type={typeForm} defaultValue={defaultHintFormValue} isOpen={isOpen} onClose={onClose} />
             </HStack>
-            <HintDataList data={hintdataResponse?.items || []} isLoading={isLoading} />
+            <HintDataList data={hintdataResponse?.items || []} isLoading={isLoading} openEditHintForm={openEditHintForm} />
         </Stack>
     )
 }

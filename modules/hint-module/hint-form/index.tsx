@@ -6,12 +6,13 @@ import { createHintData, updateHintData } from "@/service/hintdata.service"
 import { Flex, Modal, ModalContent, ModalOverlay, Stack } from "@chakra-ui/react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useSession } from "next-auth/react"
+import { useEffect } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import z from "zod"
 
 const schema = z.object({
-    username: z.string().min(1, "Username is required field"),
-    password: z.string().min(1, "Password is required field"),
+    username: z.string().min(1, "Account is required field"),
+    password: z.string(),
     catalog: z.string().optional(),
     hint: z.string().min(1, "Hint is required field")
 })
@@ -30,6 +31,8 @@ const HintForm = (props: HintFormProps) => {
     const { isOpen, onClose, type, refetch } = props
 
     const defaultValues = type === "edit" ? props.defaultValue : undefined
+    const title = type === "edit" ? "Edit Hint" : "Create Hint"
+    const submitText = type === "edit" ? "Yes, update" : "Yes, create"
 
     const {
         register,
@@ -37,9 +40,15 @@ const HintForm = (props: HintFormProps) => {
         handleSubmit,
         reset
     } = useForm<HintFormDataInput>({
-        resolver: zodResolver(schema),
-        defaultValues
+        resolver: zodResolver(schema)
     })
+
+    useEffect(() => {
+        reset(defaultValues)
+        return () => {
+            reset()
+        }
+    }, [defaultValues])
 
     const handleCreateHintData = async (data: HintFormDataInput) => {
         if (!sessionData?.accessToken) return
@@ -49,6 +58,7 @@ const HintForm = (props: HintFormProps) => {
 
     const handleUpdateHintData = async (data: HintFormDataInput) => {
         if (!sessionData?.accessToken) return
+        data.id = defaultValues?.id
         await updateHintData(data, sessionData?.accessToken)
         notify("success", "Update hint successfully")
     }
@@ -71,8 +81,8 @@ const HintForm = (props: HintFormProps) => {
                 <Card>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Stack spacing="4">
-                            <Title fontSize="xl">Create Hint</Title>
-                            <FormGroup name="username" errors={errors} label="User name">
+                            <Title fontSize="xl">{title}</Title>
+                            <FormGroup name="username" errors={errors} label="Account">
                                 <Input {...register("username")} />
                             </FormGroup>
                             <FormPasswordInput name="password" label="Password" errors={errors} register={register} />
@@ -83,10 +93,10 @@ const HintForm = (props: HintFormProps) => {
                                 <Input {...register("hint")} />
                             </FormGroup>
                             <Flex alignContent="center" gap="4" justifyContent="flex-end">
-                                <Button maxW="100%" type="submit" disabled={isSubmitting}>
-                                    Yes, create
+                                <Button maxW="100%" size="sm" type="submit" disabled={isSubmitting}>
+                                    {submitText}
                                 </Button>
-                                <Button maxW="100%" onClick={onClose} variant="outline">
+                                <Button maxW="100%" size="sm" onClick={onClose} variant="outline">
                                     No, cancel
                                 </Button>
                             </Flex>
