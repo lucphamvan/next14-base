@@ -21,18 +21,19 @@ interface HintFormProps {
     onClose: () => void
     defaultValue?: HintFormDataInput
     type: "edit" | "create"
+    refetch: () => void
 }
 
 const HintForm = (props: HintFormProps) => {
     const { data: sessionData } = useSession()
     const { notify } = useNotify()
-    const { isOpen, onClose, type } = props
+    const { isOpen, onClose, type, refetch } = props
 
     const defaultValues = type === "edit" ? props.defaultValue : undefined
 
     const {
         register,
-        formState: { errors },
+        formState: { errors, isSubmitting },
         handleSubmit,
         reset
     } = useForm<HintFormDataInput>({
@@ -57,6 +58,7 @@ const HintForm = (props: HintFormProps) => {
             type === "create" ? await handleCreateHintData(data) : await handleUpdateHintData(data)
             onClose()
             reset()
+            refetch()
         } catch (error: any) {
             notify("error", error.message)
         }
@@ -81,7 +83,7 @@ const HintForm = (props: HintFormProps) => {
                                 <Input {...register("hint")} />
                             </FormGroup>
                             <Flex alignContent="center" gap="4" justifyContent="flex-end">
-                                <Button maxW="100%" type="submit">
+                                <Button maxW="100%" type="submit" disabled={isSubmitting}>
                                     Yes, create
                                 </Button>
                                 <Button maxW="100%" onClick={onClose} variant="outline">

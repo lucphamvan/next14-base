@@ -1,21 +1,34 @@
 "use client"
 
 import { Button, Title } from "@/design-system"
-import { useNotify } from "@/design-system/toast"
 import { HintFormDataInput } from "@/model/hintdata"
-import { createHintData } from "@/service/hintdata.service"
+import { getListHintData } from "@/service/hintdata.service"
 import { HStack, Stack, useDisclosure } from "@chakra-ui/react"
+import { useQuery } from "@tanstack/react-query"
 import { useSession } from "next-auth/react"
 import { useState } from "react"
 
 import HintForm from "./hint-form"
+import HintDataList from "./hint-list"
 
 const HintModule = () => {
     const { isOpen, onClose, onToggle } = useDisclosure()
     const [typeForm, setTypeForm] = useState<"create" | "edit">("create")
     const [defaultHintFormValue, setDefaultHintFormValue] = useState<HintFormDataInput>()
-    const { data: sessionData } = useSession()
-    const { notify } = useNotify()
+
+    const { data: dataSession } = useSession()
+    const accessToken = dataSession?.accessToken || ""
+
+    const {
+        data: hintdataResponse,
+        refetch,
+        isError,
+        isLoading
+    } = useQuery({
+        queryKey: ["hint-data", accessToken],
+        queryFn: () => getListHintData(accessToken),
+        refetchInterval: 1000
+    })
 
     const openCreateHintForm = () => {
         setTypeForm("create")
@@ -32,8 +45,9 @@ const HintModule = () => {
                 <Button variant="outline" onClick={openCreateHintForm}>
                     Create Hint
                 </Button>
-                <HintForm type={typeForm} defaultValue={defaultHintFormValue} isOpen={isOpen} onClose={onClose} />
+                <HintForm refetch={refetch} type={typeForm} defaultValue={defaultHintFormValue} isOpen={isOpen} onClose={onClose} />
             </HStack>
+            <HintDataList data={hintdataResponse?.items || []} isLoading={isLoading} />
         </Stack>
     )
 }
