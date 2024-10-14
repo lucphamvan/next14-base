@@ -26,10 +26,10 @@ export enum DarkColor {
 }
 
 export enum LightColor {
-    BgMain = "linear-gradient(120deg, #F7FAFA, #F4F8F8)",
-    BgCard = "linear-gradient(120deg, #F7FAFA, #F4F8F8)",
+    BgMain = "#F1F4F9",
+    BgCard = "#ffffff",
     BgMenu = "#82acee51",
-    BgMenuHover = "#dddddd",
+    BgMenuHover = "#F2F3F4",
     BgInput = "#425455",
     BgToast = "#263335",
     BgPopup = "#263335",

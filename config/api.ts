@@ -12,6 +12,5 @@ export enum API {
     GET_USER = "/users/me",
     GET_USERS = "/users",
     CREATE_USER = "/users",
-    CREATE_TASK = baseURL + "/tasks",
-    GET_TASKS = baseURL + "/tasks"
+    HINTDATA = baseURL + "/accounts"
 }

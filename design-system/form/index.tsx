@@ -36,3 +36,5 @@ export const FormGroup: React.FC<Props> = ({ label, errors, name, children, isRe
 }
 
 export { FormError } from "./form-error"
+
+export { default as FormPasswordInput } from "./form-password"

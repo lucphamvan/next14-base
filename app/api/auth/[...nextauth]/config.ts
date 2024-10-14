@@ -1,8 +1,8 @@
 import { login, refreshAccessToken } from "@/service/authen.service"
 import { JWT } from "@auth/core/jwt"
 import NextAuth, { NextAuthConfig } from "next-auth"
+import { User as JwtUser } from "next-auth"
 import CredentialProvider from "next-auth/providers/credentials"
-import { User as JwtUser } from "next-auth/types"
 
 const ignorePaths = ["/register", "/login"]
 const isIgnorePath = (path: string) => ignorePaths.some((p) => path.startsWith(p))
