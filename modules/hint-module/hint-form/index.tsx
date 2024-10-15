@@ -10,12 +10,23 @@ import { useEffect } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import z from "zod"
 
-const schema = z.object({
-    username: z.string().min(1, "Account is required field"),
-    password: z.string(),
-    catalog: z.string().optional(),
-    hint: z.string().min(1, "Hint is required field")
-})
+const schema = z
+    .object({
+        username: z.string().min(1, "Account is required field"),
+        password: z.string(),
+        confirmPassword: z.string().optional(),
+        catalog: z.string().optional(),
+        hint: z.string().min(1, "Hint is required field")
+    })
+    .refine(
+        (values) => {
+            return values.password === values.confirmPassword
+        },
+        {
+            message: "Confirm password does not match",
+            path: ["confirmPassword"]
+        }
+    )
 
 interface HintFormProps {
     isOpen: boolean
@@ -48,7 +59,7 @@ const HintForm = (props: HintFormProps) => {
         return () => {
             reset()
         }
-    }, [defaultValues])
+    }, [defaultValues, reset])
 
     const handleCreateHintData = async (data: HintFormDataInput) => {
         if (!sessionData?.accessToken) return
@@ -82,14 +93,15 @@ const HintForm = (props: HintFormProps) => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Stack spacing="4">
                             <Title fontSize="xl">{title}</Title>
-                            <FormGroup name="username" errors={errors} label="Account">
+                            <FormGroup isRequired name="username" errors={errors} label="Account">
                                 <Input {...register("username")} />
                             </FormGroup>
                             <FormPasswordInput name="password" label="Password" errors={errors} register={register} />
+                            <FormPasswordInput name="confirmPassword" label="Confirm Password" errors={errors} register={register} />
                             <FormGroup name="catalog" errors={errors} label="Catalog">
                                 <Input {...register("catalog")} />
                             </FormGroup>
-                            <FormGroup name="hint" errors={errors} label="Hint">
+                            <FormGroup isRequired name="hint" errors={errors} label="Hint">
                                 <Input {...register("hint")} />
                             </FormGroup>
                             <Flex alignContent="center" gap="4" justifyContent="flex-end">

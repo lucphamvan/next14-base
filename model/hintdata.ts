@@ -11,4 +11,5 @@ export interface HintFormDataInput {
     hint: string
     catalog: string
     password?: string
+    confirmPassword?: string
 }

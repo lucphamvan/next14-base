@@ -51,7 +51,7 @@ const HintModule = () => {
                 <Button variant="outline" onClick={openCreateHintForm}>
                     Create Hint
                 </Button>
-                <HintForm refetch={refetch} type={typeForm} defaultValue={defaultHintFormValue} isOpen={isOpen} onClose={onClose} />
+                {isOpen && <HintForm refetch={refetch} type={typeForm} defaultValue={defaultHintFormValue} isOpen={isOpen} onClose={onClose} />}
             </HStack>
             <HintDataList data={hintdataResponse?.items || []} isLoading={isLoading} openEditHintForm={openEditHintForm} />
         </Stack>
