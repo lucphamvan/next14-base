@@ -9,9 +9,10 @@ interface Props {
     data: HintData[]
     isLoading: boolean
     openEditHintForm: (hintData: HintFormDataInput) => void
+    openDeleteHintForm: (hint: HintData) => void
 }
 
-const HintDataList = ({ data, isLoading, openEditHintForm }: Props) => {
+const HintDataList = ({ data, isLoading, openEditHintForm, openDeleteHintForm }: Props) => {
     if (isLoading) {
         return <Loading boxSize={30} />
     }
@@ -42,14 +43,13 @@ const HintDataList = ({ data, isLoading, openEditHintForm }: Props) => {
                                             onClick={() =>
                                                 openEditHintForm({
                                                     username: hintdata.username,
-
                                                     catalog: hintdata.catalog,
                                                     hint: hintdata.hint,
                                                     id: hintdata.id
                                                 })
                                             }
                                         />
-                                        <Icon as={MdDelete} cursor="pointer" />
+                                        <Icon as={MdDelete} cursor="pointer" onClick={() => openDeleteHintForm(hintdata)} />
                                     </Flex>
                                 </Td>
                             </Tr>
