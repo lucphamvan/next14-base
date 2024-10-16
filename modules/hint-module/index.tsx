@@ -12,10 +12,12 @@ import { useState } from "react"
 
 import HintForm from "./hint-form"
 import HintDataList from "./hint-list"
+import HintValidateForm from "./hint-validate-form"
 
 const HintModule = () => {
     const { isOpen, onClose, onToggle } = useDisclosure()
     const { isOpen: isOpenDelete, onClose: onCloseDelete, onToggle: onToggleDelete } = useDisclosure()
+    const { isOpen: isOpenValidate, onClose: onClodeValidate, onToggle: onToggleValidate } = useDisclosure()
 
     const [typeForm, setTypeForm] = useState<"create" | "edit">("create")
     const [defaultHintFormValue, setDefaultHintFormValue] = useState<HintFormDataInput>()
@@ -34,7 +36,8 @@ const HintModule = () => {
     } = useQuery({
         queryKey: ["hint-data", accessToken],
         queryFn: () => getListHintData(accessToken),
-        refetchInterval: 10000
+        refetchInterval: 10000,
+        enabled: !!accessToken
     })
 
     const openCreateHintForm = () => {
@@ -43,15 +46,25 @@ const HintModule = () => {
         onToggle()
     }
 
-    const openEditHintForm = (hintData: HintFormDataInput) => {
+    const openEditHintForm = (hintData: HintData) => {
         setTypeForm("edit")
-        setDefaultHintFormValue(hintData)
+        setDefaultHintFormValue({
+            username: hintData.username,
+            catalog: hintData.catalog,
+            hint: hintData.hint,
+            id: hintData.id
+        })
         onToggle()
     }
 
     const openDeleteHintForm = (hintData: HintData) => {
         setCurrentHint(hintData)
         onToggleDelete()
+    }
+
+    const openValidateHintForm = (hintData: HintData) => {
+        setCurrentHint(hintData)
+        onToggleValidate()
     }
 
     const onDeleteHint = async () => {
@@ -80,19 +93,20 @@ const HintModule = () => {
                     <ConfirmPopup
                         isOpen={isOpenDelete}
                         onClose={onCloseDelete}
-                        content="Are you sure you want to delete this hint?"
+                        content="This will permanently delete the hint. Do you want to continue?"
                         btnCancelText="No, cancel"
                         btnOkText="Yes, delete"
                         onConfirm={onDeleteHint}
                     />
                 )}
+                {isOpenValidate && <HintValidateForm isOpen={isOpenValidate} onClose={onClodeValidate} hintData={currentHint} />}
             </HStack>
             <HintDataList
                 data={hintdataResponse?.items || []}
                 isLoading={isLoading}
                 openDeleteHintForm={openDeleteHintForm}
                 openEditHintForm={openEditHintForm}
-                openValidateHintForm={() => {}}
+                openValidateHintForm={openValidateHintForm}
             />
         </Stack>
     )

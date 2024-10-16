@@ -4,8 +4,8 @@ import { PopoverContent as ChakraPopOverContent, PopoverContentProps } from "@ch
 import styled from "@emotion/styled"
 
 const StyledPopoverContent = styled(ChakraPopOverContent)`
-    background: rgb(40, 55, 56);
-    background: linear-gradient(120deg, rgba(40, 55, 56, 1), rgb(27, 38, 39));
+    background: ${({ theme }) => theme.Color.BgPopup};
+    background: ${({ theme }) => theme.Color.BgPopup}; //linear-gradient(120deg, rgba(40, 55, 56, 1), rgb(27, 38, 39));
     color: ${({ theme }) => theme.Color.TextPrimary};
     box-shadow: ${({ theme }) => theme.Color.BoxShadow_Default};
     border-radius: 4px;

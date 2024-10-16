@@ -13,3 +13,7 @@ export interface HintFormDataInput {
     password?: string
     confirmPassword?: string
 }
+
+export interface VerifyHintPassResponse {
+    isMatch: boolean
+}

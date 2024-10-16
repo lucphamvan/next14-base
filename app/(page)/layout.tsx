@@ -4,6 +4,8 @@ import { Font } from "@/config/font"
 import { BRAND_NAME } from "@/config/meta"
 import type { Metadata } from "next"
 
+import "./global.css"
+
 export const metadata: Metadata = {
     title: BRAND_NAME,
     description: "Nothing is better than a good life",

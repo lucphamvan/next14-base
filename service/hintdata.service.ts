@@ -1,5 +1,5 @@
 import { API, api } from "@/config/api"
-import { HintData, HintFormDataInput } from "@/model/hintdata"
+import { HintData, HintFormDataInput, VerifyHintPassResponse } from "@/model/hintdata"
 
 import { withToken } from "./utils"
 
@@ -30,4 +30,9 @@ export const updateHintData = async (data: Partial<HintFormDataInput>, token: st
 export const deleteHintData = async (id: string, token: string) => {
     const response = await api.delete(API.HINTDATA + "/" + id, withToken(token))
     return response.data
+}
+
+export const verifyHintPass = async (id: string, password: string, token: string) => {
+    const response = await api.post(API.HINTDATA + "/verify", { id, password }, withToken(token))
+    return response.data as VerifyHintPassResponse
 }

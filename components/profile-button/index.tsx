@@ -22,16 +22,16 @@ export const ProfileButton = () => {
             <PopoverContent>
                 <Stack alignItems="center" py="4">
                     <Avatar bg={Color.Primary} />
-                    <Text fontSize="lg" mt="2">
+                    <Text fontSize="lg" letterSpacing={1} mt="2">
                         {data?.user.name}
                     </Text>
-                    <Text fontSize="sm" fontWeight={300}>
+                    <Text fontSize="sm" letterSpacing={1}>
                         {data?.user.email}
                     </Text>
                 </Stack>
                 <Stack py="4">
                     <List>
-                        <ListItem cursor="pointer" fontSize="sm" _hover={{ background: Color.BgMenu }} onClick={() => signOut()}>
+                        <ListItem cursor="pointer" fontSize="sm" _hover={{ background: Color.BgMenu }} onClick={() => signOut()} letterSpacing={1}>
                             <ListIcon as={MdLogout} />
                             Sign out
                         </ListItem>

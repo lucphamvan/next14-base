@@ -1,6 +1,7 @@
 import Loading from "@/design-system/loading"
-import { HintData, HintFormDataInput } from "@/model/hintdata"
-import { Flex, Icon, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react"
+import useColor from "@/hook/useColor"
+import { HintData } from "@/model/hintdata"
+import { Flex, Icon, Table, TableContainer, Tbody, Td, Th, Thead, Tooltip, Tr } from "@chakra-ui/react"
 import { MdCreate, MdDelete } from "react-icons/md"
 import { TbLocationSearch } from "react-icons/tb"
 
@@ -9,15 +10,29 @@ import { tableHeader } from "./column"
 interface Props {
     data: HintData[]
     isLoading: boolean
-    openEditHintForm: (hintData: HintFormDataInput) => void
+    openEditHintForm: (hint: HintData) => void
     openDeleteHintForm: (hint: HintData) => void
-    openValidateHintForm: (id: string) => void
+    openValidateHintForm: (hint: HintData) => void
 }
 
-const HintDataList = ({ data, isLoading, openEditHintForm, openDeleteHintForm }: Props) => {
+interface TooltipIconProps {
+    icon: any
+    onClick: () => void
+    label: string
+}
+const TooltipIcon = ({ icon, onClick, label }: TooltipIconProps) => (
+    <Tooltip label={label} bg="gray.300" color="black" placement="auto">
+        <span>
+            <Icon as={icon} cursor="pointer" onClick={onClick} _hover={{ color: useColor().Primary }} />
+        </span>
+    </Tooltip>
+)
+
+const HintDataList = ({ data, isLoading, openEditHintForm, openDeleteHintForm, openValidateHintForm }: Props) => {
     if (isLoading) {
         return <Loading boxSize={30} />
     }
+
     return (
         <TableContainer userSelect="none">
             <Table variant="simple" userSelect="text">
@@ -29,35 +44,26 @@ const HintDataList = ({ data, isLoading, openEditHintForm, openDeleteHintForm }:
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {data.map((hintdata, index) => {
-                        return (
-                            <Tr key={hintdata.id}>
-                                <Td>{index + 1}</Td>
-                                <Td>{hintdata.username}</Td>
-                                <Td>******</Td>
-                                <Td>{hintdata.catalog}</Td>
-                                <Td>{hintdata.hint}</Td>
-                                <Td>
-                                    <Flex alignItems="center" gap="2">
-                                        <Icon
-                                            as={MdCreate}
-                                            cursor="pointer"
-                                            onClick={() =>
-                                                openEditHintForm({
-                                                    username: hintdata.username,
-                                                    catalog: hintdata.catalog,
-                                                    hint: hintdata.hint,
-                                                    id: hintdata.id
-                                                })
-                                            }
-                                        />
-                                        <Icon as={MdDelete} cursor="pointer" onClick={() => openDeleteHintForm(hintdata)} />
-                                        <Icon as={TbLocationSearch} cursor="pointer" onClick={() => openDeleteHintForm(hintdata)} />
-                                    </Flex>
-                                </Td>
-                            </Tr>
-                        )
-                    })}
+                    {data.map(({ id, username, catalog, hint }, index) => (
+                        <Tr key={id}>
+                            <Td>{index + 1}</Td>
+                            <Td>{username}</Td>
+                            <Td>******</Td>
+                            <Td>{catalog}</Td>
+                            <Td>{hint}</Td>
+                            <Td>
+                                <Flex alignItems="center" gap="3">
+                                    <TooltipIcon
+                                        icon={TbLocationSearch}
+                                        onClick={() => openValidateHintForm({ id, username, catalog, hint })}
+                                        label="Verify"
+                                    />
+                                    <TooltipIcon icon={MdCreate} onClick={() => openEditHintForm({ id, username, catalog, hint })} label="Update" />
+                                    <TooltipIcon icon={MdDelete} onClick={() => openDeleteHintForm({ id, username, catalog, hint })} label="Delete" />
+                                </Flex>
+                            </Td>
+                        </Tr>
+                    ))}
                 </Tbody>
             </Table>
         </TableContainer>

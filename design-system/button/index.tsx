@@ -9,7 +9,8 @@ const StyledButton = styled(ChakraButton)`
     border-radius: 0.25rem;
     padding: 6px 16px;
     /* text-transform: uppercase; */
-    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-weight: 500;
     color: ${({ theme }) => theme.Color.TextBtn};
     background-color: ${({ theme }) => theme.Color.Primary};
     background: ${({ theme }) => theme.Color.BgButton};
@@ -18,6 +19,7 @@ const StyledButton = styled(ChakraButton)`
         background: ${({ theme }) => theme.Color.BgButtonHover};
     }
     height: initial;
+    padding-top: 8px;
 `
 
 const OutlineButton = styled(StyledButton)`
