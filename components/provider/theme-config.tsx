@@ -1,5 +1,5 @@
 import { DarkColor, LightColor } from "@/config/color"
-import { FontSize } from "@/config/font"
+import { Font, FontSize } from "@/config/font"
 import { ThemeOverride } from "@chakra-ui/react"
 
 export const customTheme: ThemeOverride = {
@@ -9,7 +9,8 @@ export const customTheme: ThemeOverride = {
                 minHeight: "100vh",
                 background: LightColor.BgMain,
                 color: LightColor.TextPrimary,
-                height: "100%"
+                height: "100%",
+                fontFamily: Font.primary.style.fontFamily
             },
             html: {
                 fontSize: FontSize,
@@ -19,7 +20,8 @@ export const customTheme: ThemeOverride = {
             _dark: {
                 body: {
                     background: DarkColor.BgMain,
-                    color: DarkColor.TextPrimary
+                    color: DarkColor.TextPrimary,
+                    fontFamily: Font.primary.style.fontFamily
                 }
             }
         }

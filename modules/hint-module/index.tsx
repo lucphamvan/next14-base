@@ -92,6 +92,7 @@ const HintModule = () => {
                 isLoading={isLoading}
                 openDeleteHintForm={openDeleteHintForm}
                 openEditHintForm={openEditHintForm}
+                openValidateHintForm={() => {}}
             />
         </Stack>
     )

@@ -33,8 +33,8 @@ export enum LightColor {
     BgInput = "#425455",
     BgToast = "#263335",
     BgPopup = "#263335",
-    BgButton = "linear-gradient(90deg, #71a6db 0%, #0055aa 100%)",
-    BgButtonHover = "linear-gradient(90deg, #9bcbfc 0%, #02305e 100%)",
+    BgButton = "linear-gradient(90deg, #5198df 0%, #0055aa 100%)",
+    BgButtonHover = "linear-gradient(90deg, #5198df 0%, #04376a 100%)",
     TextPrimary = "#202724",
     TextSecondary = "#58667e",
     TextMenuActive = "#0055aa",
@@ -48,6 +48,6 @@ export enum LightColor {
     OutlineHover = "#5fa2f323",
     Error = "#db6050",
     BgCardItem = "linear-gradient(120deg, #F7FAFA, #F4F8F8)",
-    BoxShadow_Toast = "0px 10px 28px rgba(0, 0, 0, 0.088)",
+    BoxShadow_Toast = "none !important", // "0px 10px 28px rgba(0, 0, 0, 0.088)",
     BoxShadow_Default = "#161e1fa0 0px 10px 28px 0px"
 }

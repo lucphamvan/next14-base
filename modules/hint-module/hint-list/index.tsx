@@ -2,6 +2,7 @@ import Loading from "@/design-system/loading"
 import { HintData, HintFormDataInput } from "@/model/hintdata"
 import { Flex, Icon, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react"
 import { MdCreate, MdDelete } from "react-icons/md"
+import { TbLocationSearch } from "react-icons/tb"
 
 import { tableHeader } from "./column"
 
@@ -10,6 +11,7 @@ interface Props {
     isLoading: boolean
     openEditHintForm: (hintData: HintFormDataInput) => void
     openDeleteHintForm: (hint: HintData) => void
+    openValidateHintForm: (id: string) => void
 }
 
 const HintDataList = ({ data, isLoading, openEditHintForm, openDeleteHintForm }: Props) => {
@@ -50,6 +52,7 @@ const HintDataList = ({ data, isLoading, openEditHintForm, openDeleteHintForm }:
                                             }
                                         />
                                         <Icon as={MdDelete} cursor="pointer" onClick={() => openDeleteHintForm(hintdata)} />
+                                        <Icon as={TbLocationSearch} cursor="pointer" onClick={() => openDeleteHintForm(hintdata)} />
                                     </Flex>
                                 </Td>
                             </Tr>

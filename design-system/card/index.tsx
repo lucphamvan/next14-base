@@ -6,7 +6,7 @@ import styled from "@emotion/styled"
 const StyledCard = styled(ChakraCard)`
     background: ${({ bg, theme: { Color } }) => bg || Color.BgCard};
     color: ${({ theme: { Color } }) => Color.TextPrimary};
-    box-shadow: ${({ theme }) => theme.Color.BoxShadow_Toast};
+    box-shadow: none;
 `
 
 export const Card = (props: CardProps) => {
