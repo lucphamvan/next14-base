@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   hint-fe:
-    image-name: hint-fe
+    image: hint-fe
     container_name: hint-fe
     build: ./
     ports:
