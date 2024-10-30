@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const baseURL_CALL_FROM_FE = "http://localhost:7070"
-const URL_CALL_FROM_BE_NEXTJS = "hhttp://192.168.20.144:7070"
+const URL_CALL_FROM_BE_NEXTJS = "http://localhost:7070"
 
 export const api = axios.create({
     baseURL: baseURL_CALL_FROM_FE

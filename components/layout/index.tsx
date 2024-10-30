@@ -2,6 +2,7 @@
 
 import { ProfileButton } from "@/components/profile-button"
 import { BRAND_NAME } from "@/config/meta"
+import { usePathname } from "next/navigation"
 import React, { useEffect, useState } from "react"
 
 import Brand from "./brand"
@@ -12,12 +13,18 @@ import Menu from "./menu"
 import { menu } from "./menu.config"
 import { MobileMenu } from "./mobile-menu"
 
+const mapActiveItem = {
+    "/": "hint",
+    "/users": "profile"
+} as any
+
 interface Props {
     children: React.ReactNode
 }
 
 const Layout = ({ children }: Props) => {
-    const { isOpen: isOpenMenu, onToggle: onToggleMenu } = useDisclosure(true)
+    const pathname = usePathname()
+    const { isOpen: isOpenMenu, onToggle: onToggleMenu } = useDisclosure(localStorage.getItem("isMenuOpen") === "true")
     const { isOpen: isOpenMobileMenu, onToggle: onToggleMobileMenu } = useDisclosure()
     const [activeItem, setActiveItem] = useState("")
 
@@ -25,6 +32,14 @@ const Layout = ({ children }: Props) => {
         // prevent scroll when mobile menu is open
         window.document.body.style.overflow = isOpenMobileMenu ? "hidden" : "auto"
     }, [isOpenMobileMenu])
+
+    useEffect(() => {
+        setActiveItem(mapActiveItem[pathname] || "")
+    }, [pathname])
+
+    useEffect(() => {
+        localStorage.setItem("isMenuOpen", JSON.stringify(isOpenMenu))
+    }, [isOpenMenu])
 
     return (
         <Container>
