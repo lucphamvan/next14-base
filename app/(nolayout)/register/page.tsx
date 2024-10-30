@@ -1,6 +1,7 @@
 "use client"
 
 import { Font } from "@/config/font"
+import { BRAND_NAME } from "@/config/meta"
 import { Button, Card, FormGroup, Input, InputGroup, InputRightElement, Title } from "@/design-system"
 import { useNotify } from "@/design-system/toast"
 import useColor from "@/hook/useColor"
@@ -63,8 +64,8 @@ const Page = () => {
                 <Card w={["sm", "sm", "sm"]}>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Stack>
-                            <Title as="h2" fontSize="2xl" fontWeight="600" className={Font.brand.className} color={Color.Primary}>
-                                Register
+                            <Title as="h2" fontSize="2xl" fontWeight="600" fontFamily={Font.brand.style.fontFamily} color={Color.Primary}>
+                                Welcome to {BRAND_NAME.toUpperCase()}
                             </Title>
                             <FormGroup name="name" errors={errors} label="User name">
                                 <Input id="name" {...register("name")} />

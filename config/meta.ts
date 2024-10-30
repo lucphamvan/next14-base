@@ -1,1 +1,1 @@
-export const BRAND_NAME = "Hint Guard"
+export const BRAND_NAME = "HintPass"

@@ -1,6 +1,7 @@
 "use client"
 
 import { Font } from "@/config/font"
+import { BRAND_NAME } from "@/config/meta"
 import { Badge, Button, Card, FormGroup, Input, InputGroup, InputRightElement, Title } from "@/design-system"
 import useColor from "@/hook/useColor"
 import { Box, Container, Flex, Icon, Stack, Text, useToast } from "@chakra-ui/react"
@@ -59,8 +60,8 @@ const LoginPage = () => {
                 <Card minW="sm">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Stack spacing={6}>
-                            <Title as="h2" fontSize="2xl" fontWeight="600" className={Font.brand.className} color={Color.Primary}>
-                                Sign in to Intelligent X
+                            <Title as="h2" fontSize="2xl" fontWeight="600" fontFamily={Font.brand.style.fontFamily} color={Color.Primary}>
+                                Sign in to {BRAND_NAME.toUpperCase()}
                             </Title>
                             <Flex fontSize="15px" gap="2">
                                 <Text>Don’t have an account</Text>
