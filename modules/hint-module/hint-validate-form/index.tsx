@@ -1,14 +1,14 @@
 import { Font } from "@/config/font"
-import { Button, Card, FormGroup, Input, Title } from "@/design-system"
+import { Button, Card, Title } from "@/design-system"
 import { FormPasswordInput } from "@/design-system/form"
 import { useNotify } from "@/design-system/toast"
 import { HintData } from "@/model/hintdata"
 import { verifyHintPass } from "@/service/hintdata.service"
-import { Flex, Modal, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Stack, VStack } from "@chakra-ui/react"
+import { Flex, Modal, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Stack, Text, VStack } from "@chakra-ui/react"
 import { useSession } from "next-auth/react"
 import { useCallback, useState } from "react"
-import { set, useForm } from "react-hook-form"
-import { HiMiniCheck, HiMiniXCircle } from "react-icons/hi2"
+import { useForm } from "react-hook-form"
+import { HiMiniXCircle } from "react-icons/hi2"
 import { TbShieldCheckFilled } from "react-icons/tb"
 
 enum Status {
@@ -76,7 +76,7 @@ const HintValidateForm = ({ isOpen, hintData, onClose }: HintValidateFormProps) 
     }, [status])
 
     return (
-        <Modal isOpen={isOpen} size="md" onClose={onClose} closeOnOverlayClick={false}>
+        <Modal isOpen={isOpen} size={["sm", "sm", "md"]} onClose={onClose} closeOnOverlayClick={false}>
             <ModalOverlay />
             <ModalContent pt="1rem">
                 <ModalHeader
@@ -94,6 +94,9 @@ const HintValidateForm = ({ isOpen, hintData, onClose }: HintValidateFormProps) 
                 <Card>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Stack spacing={4}>
+                            <Text fontSize="sm" color="gray.500" textAlign="center">
+                                Hint : {hintData?.hint}
+                            </Text>
                             <FormPasswordInput name="password" errors={errors} label="" register={register} />
                             {renderStatus()}
                             <Flex alignContent="center" gap="4" justifyContent="center">

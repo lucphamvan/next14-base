@@ -86,7 +86,7 @@ const HintForm = (props: HintFormProps) => {
     }
 
     return (
-        <Modal isOpen={isOpen} size={"md"} onClose={onClose} closeOnOverlayClick={false}>
+        <Modal isOpen={isOpen} size={["sm", "sm", "md"]} onClose={onClose} closeOnOverlayClick={false}>
             <ModalOverlay />
             <ModalContent>
                 <Card>

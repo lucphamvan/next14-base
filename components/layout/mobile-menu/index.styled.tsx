@@ -16,7 +16,7 @@ export const Container = styled.div<{ $isShow: boolean }>`
     width: ${({ $isShow }) => ($isShow ? "70vw" : "0")};
     height: 100%;
     max-width: 300px;
-    background-color: #1b2627;
+    background-color: ${({ theme }) => theme.Color.BgMain};
     padding: 0;
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 `
