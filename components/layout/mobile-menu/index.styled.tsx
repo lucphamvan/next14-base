@@ -9,7 +9,7 @@ export const Overlay = styled.div<{ $isShow: boolean }>`
     left: 0;
     top: 0;
     overflow-x: hidden;
-    transition: width 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: width 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
 `
 
 export const Container = styled.div<{ $isShow: boolean }>`
@@ -18,7 +18,7 @@ export const Container = styled.div<{ $isShow: boolean }>`
     max-width: 300px;
     background-color: ${({ theme }) => theme.Color.BgMain};
     padding: 0;
-    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
 `
 
 export const Wrapper = styled.div`
