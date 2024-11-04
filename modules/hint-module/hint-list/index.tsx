@@ -2,7 +2,8 @@ import Loading from "@/design-system/loading"
 import useColor from "@/hook/useColor"
 import { MediaQuery, useMediaQuery } from "@/hook/useMediaQuery"
 import { HintData } from "@/model/hintdata"
-import { Flex, Icon, Table, TableContainer, Tbody, Td, Th, Thead, Tooltip, Tr } from "@chakra-ui/react"
+import { Flex, Grid, GridItem, Icon, Tooltip } from "@chakra-ui/react"
+import { Fragment } from "react"
 import { MdCreate, MdDelete } from "react-icons/md"
 import { TbLocationSearch } from "react-icons/tb"
 
@@ -37,49 +38,37 @@ const HintDataList = ({ data, isLoading, openEditHintForm, openDeleteHintForm, o
     }
 
     return (
-        <TableContainer userSelect="none">
-            <Table variant="simple" userSelect="text">
-                <Thead>
-                    <Tr>
-                        {header.map((header, index) => (
-                            <Th key={header + index}>{header}</Th>
-                        ))}
-                    </Tr>
-                </Thead>
-                <Tbody>
-                    {data.map(({ id, username, catalog, hint }, index) => {
-                        return (
-                            <Tr key={id}>
-                                <Td>{index + 1}</Td>
-                                <Td>{username}</Td>
-                                {!isMobile && <Td>&#9679;&#9679;&#9679;&#9679;&#9679;</Td>}
-                                {!isMobile && <Td>{catalog}</Td>}
-                                {!isMobile && <Td>&#9679;&#9679;&#9679;&#9679;&#9679;</Td>}
-                                <Td>
-                                    <Flex alignItems="center" gap="3">
-                                        <TooltipIcon
-                                            icon={TbLocationSearch}
-                                            onClick={() => openValidateHintForm({ id, username, catalog, hint })}
-                                            label="Verify"
-                                        />
-                                        <TooltipIcon
-                                            icon={MdCreate}
-                                            onClick={() => openEditHintForm({ id, username, catalog, hint })}
-                                            label="Update"
-                                        />
-                                        <TooltipIcon
-                                            icon={MdDelete}
-                                            onClick={() => openDeleteHintForm({ id, username, catalog, hint })}
-                                            label="Delete"
-                                        />
-                                    </Flex>
-                                </Td>
-                            </Tr>
-                        )
-                    })}
-                </Tbody>
-            </Table>
-        </TableContainer>
+        <>
+            <Grid gap={4} templateColumns={!isMobile ? "30px 1fr 1fr 1fr 1fr 1fr" : "30px 2fr 1fr"}>
+                {header.map((header, index) => (
+                    <GridItem key={header + index}>{header}</GridItem>
+                ))}
+            </Grid>
+            <Grid gap={4} templateColumns={!isMobile ? "30px 1fr 1fr 1fr 1fr 1fr" : "30px 2fr 1fr"}>
+                {data.map(({ id, username, catalog, hint }, index) => {
+                    return (
+                        <Fragment key={id}>
+                            <GridItem>{index + 1}</GridItem>
+                            <GridItem>{username}</GridItem>
+                            {!isMobile && <GridItem>&#9679;&#9679;&#9679;&#9679;&#9679;</GridItem>}
+                            {!isMobile && <GridItem>{catalog}</GridItem>}
+                            {!isMobile && <GridItem>&#9679;&#9679;&#9679;&#9679;&#9679;</GridItem>}
+                            <GridItem>
+                                <Flex alignItems="center" gap="3">
+                                    <TooltipIcon
+                                        icon={TbLocationSearch}
+                                        onClick={() => openValidateHintForm({ id, username, catalog, hint })}
+                                        label="Verify"
+                                    />
+                                    <TooltipIcon icon={MdCreate} onClick={() => openEditHintForm({ id, username, catalog, hint })} label="Update" />
+                                    <TooltipIcon icon={MdDelete} onClick={() => openDeleteHintForm({ id, username, catalog, hint })} label="Delete" />
+                                </Flex>
+                            </GridItem>
+                        </Fragment>
+                    )
+                })}
+            </Grid>
+        </>
     )
 }
 

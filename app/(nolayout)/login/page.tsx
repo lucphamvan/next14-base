@@ -43,7 +43,7 @@ const LoginPage = () => {
         const res = await signIn("credentials", { ...data, callbackUrl, redirect: false })
         if (res?.error) {
             toast({
-                description: res.error,
+                description: "Email or password is incorrect",
                 status: "error",
                 duration: 3000,
                 isClosable: true,
